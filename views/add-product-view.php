@@ -7,8 +7,9 @@
         <link rel="stylesheet" href="../lib/css/bootstrap.min.css"/>
     </head>
     <body>
-        <form action="../controllers/add-product.php"  method="POST">
+        <form action="../controllers/add-product.php"  method="POST" enctype="multipart/form-data">
             <div class="container w-50 container-sm-fluid mx-auto">
+                <h2>Add Product</h2>
                 <div class="row" id="form-fields-container">
                     <!-- will be inserted -->
                 </div>
@@ -16,33 +17,37 @@
         </form>
         <script>
             //making sure that the form fields are easy to change
-            const createFormField = (name, type) => {return {"name":name, "type":type}};
+            function insertFormFields() {
+                const createFormField = (name, type) => {return {"name":name, "type":type}};
 
-            const formFields = [createFormField("name", "text"), createFormField("price", "number"), createFormField("description", "textarea"), createFormField("Quantity", "number"), createFormField("image", "file")];
+                const formFields = [createFormField("name", "text"), createFormField("price", "number"), createFormField("description", "textarea"), createFormField("Quantity", "number"), createFormField("image", "file")];
 
-            const formFieldsTemplateString = `
-                ${formFields.map(field => {
-                    return `
-                        <div class="col-12 my-3">
-                            ${(field.type == "textarea")?
-                                `<textarea name="${field.name}"></textarea>`
-                                :
-                                `<label for="product-${field.name}">Product ${field.name}</label>
-                                 <input class="form-control" type="${field.type}" name="product-${field.name}" placeholder="Enter Product ${field.name}"/>`
-                            }                          
-                        </div>                   
-                    `;
-                })
-                .join("\n")
-            }`;
-            const formFieldsContainer = document.getElementById("form-fields-container");
-            formFieldsContainer.innerHTML = formFieldsTemplateString;
+                const formFieldsTemplateString = `
+                    ${formFields.map(field => {
+                        return `
+                            <div class="col-12 my-3">
+                                ${(field.type == "textarea")?
+                                    `<textarea name="${field.name}"></textarea>`
+                                    :
+                                    `<label class="form-label" for="product-${field.name}">Product ${field.name}</label>
+                                    <input class="form-control" type="${field.type}" name="product-${field.name}" placeholder="Enter Product ${field.name}"/>`
+                                }                          
+                            </div>                   
+                        `;
+                    })
+                    .join("\n")
+                }`;
+                const formFieldsContainer = document.getElementById("form-fields-container");
+                formFieldsContainer.innerHTML = formFieldsTemplateString;
 
-            const submitBtn = document.createElement("button");
-            submitBtn.type = "submit";
-            submitBtn.innerText = "Add Product";
-            submitBtn.class = "btn btn-primary";
-            formFieldsContainer.appendChild(submitBtn);
+                const submitBtn = document.createElement("button");
+                submitBtn.type = "submit";
+                submitBtn.innerText = "Add Product";
+                submitBtn.className = "btn btn-primary w-100";
+                formFieldsContainer.appendChild(submitBtn);
+            }
+            
+            insertFormFields();
         </script>
     </body>
 </html>
