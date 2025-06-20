@@ -46,12 +46,13 @@
 			$fieldsvalue="";
 
 			if($table!="" && $fielddata!=NULL){
-				//print_r($fielddata);
+				echo("got here, fielddata is");
+                print_r($fielddata);
                 
                 //this loop produces separate comma-separated lists of the keys and values of the fielddata object
 				foreach($fielddata as $key=>$value){
 					$fields=$fields . $key . ",";
-                    $fieldsvalue=$fieldsvalue . $value . ",";
+                    $fieldsvalue=$fieldsvalue . "\"". $value . "\",";
 				}
 
                 $fields = substr($fields,0,strlen($fields)-1);

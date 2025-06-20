@@ -20,17 +20,18 @@
             function insertFormFields() {
                 const createFormField = (name, type) => {return {"name":name, "type":type}};
 
-                const formFields = [createFormField("name", "text"), createFormField("price", "number"), createFormField("description", "textarea"), createFormField("Quantity", "number"), createFormField("image", "file")];
+                //change this variable if you wish to change the frontend of things uploaded
+                const formFields = [createFormField("name", "text"), createFormField("price", "number"), createFormField("description", "textarea"), createFormField("quantity_avail", "number"), createFormField("image", "file")];
 
                 const formFieldsTemplateString = `
                     ${formFields.map(field => {
                         return `
                             <div class="col-12 my-3">
+                                <label class="form-label" for="product-${field.name}">Product ${field.name}</label><br/>
                                 ${(field.type == "textarea")?
-                                    `<textarea name="${field.name}"></textarea>`
+                                    `<textarea name="product_${field.name}"></textarea>`
                                     :
-                                    `<label class="form-label" for="product-${field.name}">Product ${field.name}</label>
-                                    <input class="form-control" type="${field.type}" name="product-${field.name}" placeholder="Enter Product ${field.name}"/>`
+                                    `<input class="form-control" type="${field.type}" name="product_${field.name}" placeholder="Enter Product ${field.name}"/>`
                                 }                          
                             </div>                   
                         `;
