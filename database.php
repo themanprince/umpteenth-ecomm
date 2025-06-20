@@ -46,8 +46,7 @@
 			$fieldsvalue="";
 
 			if($table!="" && $fielddata!=NULL){
-				echo("got here, fielddata is");
-                print_r($fielddata);
+				//print_r($fielddata);
                 
                 //this loop produces separate comma-separated lists of the keys and values of the fielddata object
 				foreach($fielddata as $key=>$value){
@@ -60,8 +59,7 @@
 					
 				//Query insert ke sql
 				$sql = "INSERT INTO " . $table . " ( " . $fields . " ) " . " VALUES ( " . $fieldsvalue . " ) ";
-                echo("got here, sql statement is $sql");
-				//Execute Query
+                //Execute Query
 				$this->db_connection->query($sql);				
 				//mysql_query($sql,$this->db_connection);
 				$result = $this->db_connection->insert_id;

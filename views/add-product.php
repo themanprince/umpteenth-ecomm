@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Add Product</title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="../lib/css/bootstrap.min.css"/>
-    </head>
+    <?php
+        include("./html-head.php");
+    ?>
     <body>
         <form action="../controllers/add-product.php"  method="POST" enctype="multipart/form-data">
             <div class="container w-50 container-sm-fluid mx-auto">
@@ -29,9 +26,9 @@
                             <div class="col-12 my-3">
                                 <label class="form-label" for="product-${field.name}">Product ${field.name}</label><br/>
                                 ${(field.type == "textarea")?
-                                    `<textarea name="product_${field.name}"></textarea>`
+                                    `<textarea required name="product_${field.name}"></textarea>`
                                     :
-                                    `<input class="form-control" type="${field.type}" name="product_${field.name}" placeholder="Enter Product ${field.name}"/>`
+                                    `<input required class="form-control" type="${field.type}" name="product_${field.name}" placeholder="Enter Product ${field.name}" ${(field.type == "file")? "accept=\".jpg, .jpeg, .png\"":""}/>`
                                 }                          
                             </div>                   
                         `;
