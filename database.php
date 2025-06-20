@@ -5,17 +5,9 @@
 		private $db_connection;
 		private $db_selection;
 
-		function __construct($root=false){
-			$root_dot="";
-			if($root==true){
-				$root_dot="../";
-			}else{
-				$root_dot="";
-			}
-
-			include($root_dot . "/database_config.php");
+		function __construct(){
+			include("database_config.php");
 			$this->db_connection = new mysqli($db_server,$db_user,$db_password,$db_selected,$db_port);
-
 		}
 
 		function db_queryresult($sql=""){
@@ -55,18 +47,19 @@
 
 			if($table!="" && $fielddata!=NULL){
 				//print_r($fielddata);
-				foreach($fielddata as $rows=>$rowsvalue){
-					$fields=$fields . $rows . ",";
-					$fieldsvalue=$fieldsvalue . $rowsvalue . ",";
+                
+                //this loop produces separate comma-separated lists of the keys and values of the fielddata object
+				foreach($fielddata as $key=>$value){
+					$fields=$fields . $key . ",";
+                    $fieldsvalue=$fieldsvalue . $value . ",";
 				}
-				//buang koma terakhir
-				//paramater pertama fields,posisi awal,banyaknya berapa
-				$fields = substr($fields,0,strlen($fields)-1);
-				$fieldsvalue = substr($fieldsvalue,0,strlen($fieldsvalue)-1);
 
+                $fields = substr($fields,0,strlen($fields)-1);
+				$fieldsvalue = substr($fieldsvalue,0,strlen($fieldsvalue)-1);
+					
 				//Query insert ke sql
 				$sql = "INSERT INTO " . $table . " ( " . $fields . " ) " . " VALUES ( " . $fieldsvalue . " ) ";
-				//echo $sql . "<br>";
+                echo("got here, sql statement is $sql");
 				//Execute Query
 				$this->db_connection->query($sql);				
 				//mysql_query($sql,$this->db_connection);
