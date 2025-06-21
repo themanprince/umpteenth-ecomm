@@ -21,7 +21,7 @@
             <h2><?php echo($site_name) ?></h2>
             <small><?php echo($site_tagline) ?></small>
         </div>
-        <div id="product-block" class="row mx-2 my-2">
+        <div id="product-block" class="row mx-2 mt-4 gx-2">
             
         </div>
 

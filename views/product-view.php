@@ -1,6 +1,6 @@
 <?php
     require("../database.php");
-    include("../general-config.php");
+    include("../general_config.php");
     $db = new Database;
 ?>
 
