@@ -73,7 +73,7 @@
 			$fieldset="";
 			if($table!="" && $fielddata!=NULL && $wherestr != ""){
 				foreach($fielddata as $field=>$fieldvalue){
-					$fieldset = $fieldset . $field . "=" . $fieldvalue . ",";
+					$fieldset = $fieldset . $field . "='" . $fieldvalue . "',";
 				}
 				$fieldset = substr($fieldset,0,strlen($fieldset)-1);
 

@@ -127,6 +127,11 @@
                 </tbody>
             </table> 
         <script>
+            <?php
+                if (isset($_GET["message"])) {
+                    echo("window.alert(" . $_GET['message'] . ")");
+                }
+            ?>
             const sendDeleteRequest = (product_id) => async () => {
                 const requestArgs = {
                     "method": "POST",

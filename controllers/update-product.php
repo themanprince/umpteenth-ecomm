@@ -13,4 +13,5 @@
     }
 
     $db -> db_update("products", $_POST_filtered, "product_id=".$_POST['product_id']);
+    header("../views/view-product.php?message=product%20updated%20successfully");
 ?>
