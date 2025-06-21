@@ -22,4 +22,5 @@
 ?>
 <script>
     window.alert("product%20updated%20successfully");
+	window.location.href = "../views/product-view.php";
 </script>
