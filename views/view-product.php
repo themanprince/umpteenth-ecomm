@@ -33,7 +33,7 @@
                     echo("<div class='w-100 bg-info text-light text-center py-3 h2'>Edit Product</div>");
                     echo("<div class='mx-0 mx-md-auto product-image'><img src='" . $product_properties['product_image_url'] ."'/></div>");
         ?>
-                    <form action="../controllers/update-product.php" method="POST">
+                    <form action="../controllers/update-product.php" method="POST" enctype="multipart/form-data">
                         <div class="container w-75 container-sm-fluid mx-auto">
                             <div class="row" id="form-fields-container">
                                 <?php
@@ -53,17 +53,17 @@
                                 <input type="hidden" value="<?php echo($product_properties['product_id']) ?>" name="product_id" />
                                 <div class="col-12 my-3 my-sm-2">
                                     <label class="form-label" >product_description</label><br/>
-                                    <textarea name="product_description" class="form-control"></textarea>
+                                    <textarea name="product_description" class="form-control"><?php echo($product_properties['product_description']); ?></textarea>
                                 </div>
                                 <div class="col-12 my-3 my-sm-2">
                                     <label class="form-label">product_image</label>
-                                    <input type="file" name="product_image" class="form-control"/>
+                                    <input type="file" name="product_image" class="form-control" accept=".png, .jpg, .jpeg" />
                                 </div>
                                 <div class="col-12 my-3 my-sm-2">
                                     <label class="form-label">is_hidden</label>
                                     <select name="is_hidden" class="form-control">
-                                        <option value="TRUE">Yes</option>
-                                        <option value="FALSE">No</option>
+                                        <option value="1" <?php echo(($product_properties['is_hidden'] == 1)? "selected":"") ?>>Yes</option>
+                                        <option value="0" <?php echo(($product_properties['is_hidden'] == 0)? "selected":"") ?>>No</option>
                                     </select>
                                 </div>
                                     

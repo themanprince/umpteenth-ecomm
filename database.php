@@ -79,7 +79,6 @@
 
 				$sql ="UPDATE " . $table . " SET " . $fieldset;
 				$sql = $sql . " WHERE " . $wherestr;
-
 				$result = $this->db_connection->query($sql);
 			}
 
