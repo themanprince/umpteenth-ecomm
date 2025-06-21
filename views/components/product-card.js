@@ -1,7 +1,8 @@
-const createProductCard = ({product_name, product_price, product_image_url}, alert_sys) => {
+const createProductCard = ({product_id, product_name, product_price, product_image_url, product_quantity_avail, product_description}, alert_sys) => {
     const style = `
         display: flex;
         flex-direction: column;
+        margin-block-end: 2rem;
     `;
 
     const container = document.createElement("div");
@@ -18,7 +19,21 @@ const createProductCard = ({product_name, product_price, product_image_url}, ale
 
     container.innerHTML = productTemplate;
     container.getElementsByClassName("add-to-cart")[0].addEventListener("click", e => {
-        alert_sys.fire("I have been fired");
+        alert_sys.fire({
+            "html": `
+                        <style>
+                            #product-img {
+                                border-radius: 30px;
+                            }
+                        </style>
+                        <div class="add-to-cart-interface d-inline-flex p-3">
+                            <img src="${product_image_url}" id="product-img"/>
+                            <div class="d-flex flex-column">
+                                <!-- other product details go here -->
+                            </div>
+                        </div>
+                    `
+        });        
     });
 
     return container;

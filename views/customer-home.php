@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     require("../site_config.php");
     require("../database.php");
 
@@ -34,9 +36,12 @@
                 foreach ($_SESSION["products"] as $product) {
             ?>
                 product_details = {
+                    "product_id": "<?php echo($product['product_id']); ?>",
                     "product_name": "<?php echo($product['product_name']); ?>",
                     "product_price": "<?php echo($product['product_price']); ?>",
-                    "product_image_url": "<?php echo($product['product_image_url']); ?>"
+                    "product_image_url": "<?php echo($product['product_image_url']); ?>",
+                    "product_description": "<?php echo($product['product_description']); ?>",
+                    "product_quantity_avail": "<?php echo($product['product_quantity_avail']); ?>"
                 };
                 product_node = createProductCard(product_details, Swal);
                 product_block.appendChild(product_node);
