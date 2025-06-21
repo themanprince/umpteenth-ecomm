@@ -21,22 +21,27 @@
             <h2><?php echo($site_name) ?></h2>
             <small><?php echo($site_tagline) ?></small>
         </div>
-        <div id="product-block">
+        <div id="product-block" class="row mx-2 my-2">
             
         </div>
-    <script src="components/product-card.js"></script>
-    <script>
-        const product_block = document.getElementById("product-block");
-        <?php
-            $first_product = $_SESSION["products"][0];
-        ?>
-        const first_product_details = {
-            "product_name": "<?php echo($first_product['product_name']); ?>",
-            "product_price": "<?php echo($first_product['product_price']); ?>",
-            "product_image_url": "<?php echo($first_product['product_image_url']); ?>"
-        };
-        const test_product = createProductCard(first_product_details);
-        product_block.appendChild(test_product);
-    </script>
+
+        <script src="components/product-card.js"></script>
+        <script>
+            const product_block = document.getElementById("product-block");
+            let product_details, product_node;
+            <?php
+                foreach ($_SESSION["products"] as $product) {
+            ?>
+                product_details = {
+                    "product_name": "<?php echo($product['product_name']); ?>",
+                    "product_price": "<?php echo($product['product_price']); ?>",
+                    "product_image_url": "<?php echo($product['product_image_url']); ?>"
+                };
+                product_node = createProductCard(product_details);
+                product_block.appendChild(product_node);
+            <?php
+                }
+            ?>
+        </script>
     </body>
 </html>
