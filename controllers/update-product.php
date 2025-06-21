@@ -21,6 +21,6 @@
     $db -> db_update("products", $_POST_filtered, "product_id=".$_POST['product_id']);
 ?>
 <script>
-    window.alert("product%20updated%20successfully");
+    window.alert("product updated successfully");
 	window.location.href = "../views/product-view.php";
 </script>

@@ -14,7 +14,7 @@
         border-top-left-radius: 30px;
         border-bottom-left-radius: 30px;
         outline: none;
-        padding: 5px;
+        padding: 7px;
     }
     
     #submit-btn {

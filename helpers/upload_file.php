@@ -1,5 +1,5 @@
 <?php
-    include("../general-config.php");
+    include("../general_config.php");
 
     function uploadFile($file) { #should return the path to the file in my server
         $upload_dir = (isset($file_upload_dir))? $file_upload_dir : "../upload_dir"; 
