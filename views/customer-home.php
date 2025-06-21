@@ -21,10 +21,11 @@
             <h2><?php echo($site_name) ?></h2>
             <small><?php echo($site_tagline) ?></small>
         </div>
-        <div id="product-block" class="row mx-2 mt-4 gx-2">
+        <div id="product-block" class="row mx-2 mt-4 gx-2 gy-2">
             
         </div>
 
+        <script src="../lib/js/sweetalert.js"></script>
         <script src="components/product-card.js"></script>
         <script>
             const product_block = document.getElementById("product-block");
@@ -37,7 +38,7 @@
                     "product_price": "<?php echo($product['product_price']); ?>",
                     "product_image_url": "<?php echo($product['product_image_url']); ?>"
                 };
-                product_node = createProductCard(product_details);
+                product_node = createProductCard(product_details, Swal);
                 product_block.appendChild(product_node);
             <?php
                 }
