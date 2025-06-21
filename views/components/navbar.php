@@ -1,3 +1,7 @@
+<?php
+    require("../site_config.php");
+?>
+
 <style>
 
     #search-form {
@@ -14,7 +18,7 @@
         border-top-left-radius: 30px;
         border-bottom-left-radius: 30px;
         outline: none;
-        padding: 7px;
+        padding: 5px;
     }
     
     #submit-btn {
@@ -45,7 +49,7 @@
 <div class="containter-fluid my-4">
     <div class="row">
         <div class="col-1"></div>
-        <div class="col-1"><img src="../icons/favico.jpg" alt="logo" width="25" height="25"/></div>
+        <div class="col-1"><img src="../<?php echo($site_logo_url) ?>" alt="logo" width="25" height="25"/></div>
         <div class="col-1"></div>
         <div class="col-9 row justify-content-around">
             <form id="search-form" class="col-9">
