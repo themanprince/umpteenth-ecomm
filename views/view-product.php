@@ -12,14 +12,16 @@
         ?>
         <style>
             .product-image {
-                inline-size: 90%;
+                max-inline-size: 90%;
                 border-radius: 10%;
                 block-size: 30%;
-                margin-inline: auto;
                 margin-block: 20px;
             }
             .product-image img {
                 max-inline-size: 100%;
+            }
+            form, body {
+                overflow: scroll;
             }
         </style>
     </head>
@@ -28,11 +30,11 @@
             if(isset($_GET["product_id"])) {
                 $product_properties = $db -> db_getonerow("SELECT * FROM products WHERE product_id = " . $_GET['product_id']);
                 if (isset($product_properties)) {
-                    echo("<div class='product-image'><img src='" . $product_properties['product_image_url'] ."'/></div>");
+                    echo("<div class='w-100 bg-info text-light text-center py-3 h2'>Edit Product</div>");
+                    echo("<div class='mx-0 mx-md-auto product-image'><img src='" . $product_properties['product_image_url'] ."'/></div>");
         ?>
                     <form action="../controllers/update-product.php" method="POST">
                         <div class="container w-75 container-sm-fluid mx-auto">
-                            <h2>Edit Product</h2>
                             <div class="row" id="form-fields-container">
                                 <?php
                                     $keys_to_avoid = array("product_id", "product_image_url", "product_description", "is_hidden");
@@ -65,11 +67,11 @@
                                     </select>
                                 </div>
                                     
-                                <div class="col-6">
-                                    <button type="submit" class="btn btn-primary">Update Product Details</button>
+                                <div class="col-5 me-3">
+                                    <button type="submit" class="btn btn-primary text-light w-100">Update</button>
                                 </div>
-                                <div class="col-6">
-                                    <a class="btn btn-danger" onclick="sendDeleteRequest(<?php echo($product_properties['product_id']); ?>)">Delete Product</a>
+                                <div class="col-5 me-3">
+                                    <a class="btn btn-danger text-light w-100" onclick="sendDeleteRequest(<?php echo($product_properties['product_id']); ?>)">Delete</a>
                                 </div>                                
                             </div>
                         </div>                       
@@ -116,7 +118,7 @@
                                     echo("<td". ((is_numeric($value))? ' class=\'text-right\'': '') . ">" . $value . "</td>");
                                 }
                             ?>
-                            <td><button class="btn btn-info">Edit</button></td>
+                            <td><a href="<?php echo($_SERVER['PHP_SELF'] . '?product_id=' . $curr_product['product_id']) ?>" class="btn btn-info">Edit</a></td>
                         </tr>
                     <?php
                 }
