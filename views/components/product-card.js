@@ -68,11 +68,19 @@ const createProductCard = ({product_id, product_name, product_price, product_ima
                         </div>
                     `,
             "width": "70%",
-            "height": "70%",
             "confirmButtonText": "Add To Cart",
             "confirmButtonColor":"var(--info)",
             "showCancelButton": true,
             "cancelButtonText": "Cancel",
+        }).then(e => {
+            const product_details = {product_id, product_name, product_price, product_image_url, product_quantity_avail, product_description};
+            if(sessionStorage.getItem("cart") == null)
+                sessionStorage.setItem("cart", JSON.stringify([{...product_details}]));
+            else {
+                cart = JSON.parse(sessionStorage.getItem("cart"));
+                cart.push({...product_details});
+                sessionStorage.setItem("cart", JSON.stringify(cart));
+            }
         });        
     });
 
