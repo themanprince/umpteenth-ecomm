@@ -7,7 +7,7 @@
     $db = new Database;
 
     $product_limit = 20;
-    $_SESSION["products"] = $db -> db_queryresult("SELECT * FROM products LIMIT " . $product_limit . ";");
+    $_SESSION["products"] = $db -> db_queryresult("SELECT * FROM products WHERE is_hidden=0 LIMIT " . $product_limit . ";");
 ?>
 
 <!DOCTYPE html>

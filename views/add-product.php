@@ -8,7 +8,7 @@
     <body>
         <form class="mt-4" action="../controllers/add-product.php"  method="POST" enctype="multipart/form-data">
             <div class="container w-75 container-sm-fluid mx-auto">
-                <h2>Add Product</h2>
+                <h2>Add Product</h2> <a class="btn btn-secondary d-inline-block ms-2" href="product-view.php"><u>See All Products</u></a>
                 <div class="row" id="form-fields-container">
                     <!-- will be inserted -->
                 </div>

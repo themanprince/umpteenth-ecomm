@@ -12,8 +12,8 @@
     }
 
     #search-input {
-        background-color: transparent;
-        border: 2px solid grey;
+        background-color: lightgrey;
+        border: 2px solid lightgrey;
         border-inline-end: none;
         border-top-left-radius: 30px;
         border-bottom-left-radius: 30px;
@@ -22,8 +22,8 @@
     }
     
     #submit-btn {
-        background-color: transparent;
-        border: 2px solid grey;
+        background-color: lightgrey;
+        border: 2px solid lightgrey;
         border-inline-start: none;
         border-top-right-radius: 30px;
         border-bottom-right-radius: 30px;
