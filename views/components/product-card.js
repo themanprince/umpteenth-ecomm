@@ -32,6 +32,8 @@ const createProductCard = ({product_id, product_name, product_price, product_ima
                         
                             #product-img {
                                 border-radius: 30px;
+                                block-size: 100%;
+                                max-block-size: calc(100% - 20px);
                             }
                             
                             #quantity {
@@ -48,17 +50,17 @@ const createProductCard = ({product_id, product_name, product_price, product_ima
                         <div class="w-100 add-to-cart-interface p-3 row m-0">
                             <img src="${product_image_url}" id="product-img" class="col-12 col-md-6" />
                             <div class="col-12 col-md-6 d-flex flex-column justify-content-around justify-content-md-center align-items-center align-items-md-start text-center text-md-left mt-3 mt-md-0">
-                                <div class="me-2">
+                                <div class="me-md-5">
                                     <small>${product_name}</small></br>
                                     <b>N${product_price}</b>
                                 </div>
                                 
-                                <div class="my-3">
+                                <div class="my-md-5">
                                     <u>Product Description</u><br/>
                                     <small class="text-left"><i>${product_description}</i></small>
                                 </div>                                
                                 
-                                <div class="me-2">
+                                <div>
                                     <label for="quantity"><small class="font-weight-bold">Quantity to Buy</small></label>
                                     <input class="form-control border-2" type="number" id="quantity" max="${product_quantity_avail}" ${(product_quantity_avail > 0)? 'focus' : 'disabled'} placeholder="${(product_quantity_avail > 0)? 'e.g. 1' : 'Not Available'}"/>
                                 </div>
