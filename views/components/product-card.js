@@ -23,65 +23,84 @@ const createProductCard = ({product_id, product_name, product_price, product_ima
 
     container.innerHTML = productTemplate;
     container.getElementsByClassName("add-to-cart")[0].addEventListener("click", e => {
-        alert_sys.fire({
-            "html": `
-                        <style>
-                            #add-to-cart-interface {
-                                font-size: 1rem;
-                            }
-                        
-                            #product-img {
-                                border-radius: 30px;
-                                block-size: 100%;
-                                max-block-size: calc(100% - 20px);
-                            }
+        function fire_add_to_cart_modal() {
+            alert_sys.fire({
+                "html": `
+                            <style>
+                                #add-to-cart-interface {
+                                    font-size: 1rem;
+                                }
                             
-                            #quantity {
-                                border: none;
-                                border-block-end: 2px solid grey;
-                                transition: 1s;
-                            }
+                                #product-img {
+                                    border-radius: 30px;
+                                    block-size: 100%;
+                                    max-block-size: calc(100% - 20px);
+                                }
+                                
+                                #quantity-to-buy {
+                                    border: none;
+                                    border-block-end: 2px solid grey;
+                                    transition: 1s;
+                                }
 
-                            #quantity:focus {
-                                outline: none;
-                                border-block-end: 2px solid var(--primary);
-                            }
-                        </style>
-                        <div class="w-100 add-to-cart-interface p-3 row m-0">
-                            <img src="${product_image_url}" id="product-img" class="col-12 col-md-6" />
-                            <div class="col-12 col-md-6 d-flex flex-column justify-content-around justify-content-md-center align-items-center align-items-md-start text-center text-md-left mt-3 mt-md-0">
-                                <div class="me-md-5">
-                                    <small>${product_name}</small></br>
-                                    <b>N${product_price}</b>
-                                </div>
-                                
-                                <div class="my-md-5">
-                                    <u>Product Description</u><br/>
-                                    <small class="text-left"><i>${product_description}</i></small>
-                                </div>                                
-                                
-                                <div>
-                                    <label for="quantity"><small class="font-weight-bold">Quantity to Buy</small></label>
-                                    <input class="form-control border-2" type="number" id="quantity" max="${product_quantity_avail}" ${(product_quantity_avail > 0)? 'focus' : 'disabled'} placeholder="${(product_quantity_avail > 0)? 'e.g. 1' : 'Not Available'}"/>
+                                #quantity-to-buy:focus {
+                                    outline: none;
+                                    border-block-end: 2px solid var(--primary);
+                                }
+
+                                #quantity-to-buy .error-mode {
+                                    border-block-end: 3px solid var(--danger);
+                                }
+
+                            </style>
+                            <div class="w-100 add-to-cart-interface p-3 row m-0">
+                                <img src="${product_image_url}" id="product-img" class="col-12 col-md-6" />
+                                <div class="col-12 col-md-6 d-flex flex-column justify-content-around justify-content-md-center align-items-center align-items-md-start text-center text-md-left mt-3 mt-md-0">
+                                    <div class="me-md-5">
+                                        <small>${product_name}</small></br>
+                                        <b>N${product_price}</b>
+                                    </div>
+                                    
+                                    <div class="my-md-5">
+                                        <u>Product Description</u><br/>
+                                        <small class="text-left"><i>${product_description}</i></small>
+                                    </div>                                
+                                    
+                                    <div>
+                                        <label for="quantity-to-buy"><small class="font-weight-bold">Quantity to Buy</small></label>
+                                        <input class="form-control border-2" type="number" id="quantity-to-buy" max="${product_quantity_avail}" ${(product_quantity_avail > 0)? 'focus' : 'disabled'} placeholder="${(product_quantity_avail > 0)? 'e.g. 1' : 'Not Available'}"/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    `,
-            "width": "70%",
-            "confirmButtonText": "Add To Cart",
-            "confirmButtonColor":"var(--info)",
-            "showCancelButton": true,
-            "cancelButtonText": "Cancel",
-        }).then(e => {
-            const product_details = {product_id, product_name, product_price, product_image_url, product_quantity_avail, product_description};
-            if(sessionStorage.getItem("cart") == null)
-                sessionStorage.setItem("cart", JSON.stringify([{...product_details}]));
-            else {
-                cart = JSON.parse(sessionStorage.getItem("cart"));
-                cart.push({...product_details});
-                sessionStorage.setItem("cart", JSON.stringify(cart));
-            }
-        });        
+                        `,
+                "width": "70%",
+                "confirmButtonText": "Add To Cart",
+                "confirmButtonColor":"var(--info)",
+                "showCancelButton": true,
+                "cancelButtonText": "Cancel",
+            }).then(e => {
+                const quantity_to_buy_node = document.getElementById("quantity-to-buy");
+                const quantity_to_buy = quantity_to_buy_node.value;
+                if(!quantity_to_buy) {
+                    alert_sys.fire({
+                        "text":"Please Enter a valid Quantity",
+                        "type": "error"
+                    }).then(e => fire_add_to_cart_modal());
+                }
+
+                const product_details = {product_id, product_name, product_price, product_image_url, product_quantity_avail, product_description};
+                if(sessionStorage.getItem("cart") == null)
+                    sessionStorage.setItem("cart", JSON.stringify([{...product_details}]));
+                else {
+                    cart = JSON.parse(sessionStorage.getItem("cart"));
+                    cart.push({...product_details});
+                    sessionStorage.setItem("cart", JSON.stringify(cart));
+                }
+            });
+        }
+
+        fire_add_to_cart_modal();
+                
     });
 
     return container;
