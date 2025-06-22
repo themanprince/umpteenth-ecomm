@@ -27,7 +27,7 @@
         </div>
 
         <script src="../lib/js/sweetalert.js"></script>
-        <script src="components/product-card.js"></script>
+        <script src="components/product_card.js"></script>
         <script>
             const product_block = document.getElementById("product-block");
             let product_details, product_node;
@@ -52,6 +52,24 @@
             <?php
                 }
             ?>
+        <script>
+            function handle_cart_notification_icon() {
+                const length_of_cart = (JSON.parse(sessionStorage.getItem("cart")) || []).length;
+                if(length_of_cart)
+                    document.getElementById("cart-notification-icon")
+                        .style.display = "block";
+                else
+                    document.getElementById("cart-notification-icon")
+                        .style.display = "none";
+            }
+            
+            handle_cart_notification_icon();
+
+            const cart_icon = document.getElementById("cart-icon");
+            cart_icon.addEventListener("cartModified", e => {
+                handle_cart_notification_icon();
+            });
+        </script>
     </body>
 </html>
 <?php

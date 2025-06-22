@@ -40,13 +40,18 @@
 
     #cart-icon {
         inline-size: 30px;
-        border: 2px solid var(--bg-primary);
+        transition: 1.5s;
+    }
+
+    #cart-icon:hover {
         border-radius: 100%;
+        background-color: var(--grey);
+        cursor: pointer;
     }
 
 </style>
 
-<div class="containter-fluid my-4">
+<div class="containter-fluid fixed-top bg-light py-3">
     <div class="row">
         <div class="col-1"></div>
         <div class="col-1"><img src="../<?php echo($site_logo_url) ?>" alt="logo" width="25" height="25"/></div>
@@ -55,7 +60,10 @@
             <form id="search-form" class="col-9">
                 <input type="search" placeholder="search" name="product-name" id="search-input" class="w-100"/><button type="submit" id="submit-btn"><img src="../icons/search-icon.png" alt="search" id="search-icon" /></button>
             </form>
-            <div id="cart-icon" class="col-2"><img src="../icons/cart-icon.png"/></div>
+            <div id="cart-icon" class="col-2 position-relative">
+                <div id="cart-notification-icon" class="position-absolute p-2 bg-danger rounded-circle" style="display: none"></div>
+                <img src="../icons/cart-icon.png"/>
+            </div>
         </div>
     </div>
 </div>

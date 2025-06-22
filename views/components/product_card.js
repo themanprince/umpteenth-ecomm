@@ -83,8 +83,7 @@ const createProductCard = ({product_id, product_name, product_price, product_ima
                 const quantity_to_buy = quantity_to_buy_node.value;
                 if(!quantity_to_buy) {
                     alert_sys.fire({
-                        "text":"Please Enter a valid Quantity",
-                        "type": "error"
+                        "text":"Please Enter a valid Quantity"
                     }).then(e => fire_add_to_cart_modal());
                 }
 
@@ -96,6 +95,9 @@ const createProductCard = ({product_id, product_name, product_price, product_ima
                     cart.push({...product_details});
                     sessionStorage.setItem("cart", JSON.stringify(cart));
                 }
+
+                document.getElementById("cart-icon")
+                    .dispatchEvent(new Event("cartModified"));
             });
         }
 
