@@ -126,6 +126,11 @@
                     ?>                    
                 </tbody>
             </table> 
+            <div class="d-inline-flex justify-content-between align-items-center">
+                <a class="btn btn-info flex-1" href="add-product.php">Add New Product</a>
+            </div>
+
+
         <script>
             <?php
                 if (isset($_GET["message"])) {
