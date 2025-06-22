@@ -9,3 +9,7 @@
     $db -> db_insert("products", $_POST)
     or die("unable to insert product");
 ?>
+<script>
+    window.alert("product added successfully");
+	window.location.href = "../views/product-view.php";
+</script>

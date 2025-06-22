@@ -14,7 +14,8 @@
         $_POST_filtered[$key] = $value;
     }
 
-    if (array_key_exists("product_image", $_FILES)) {
+
+    if ($_FILES["product_image"]["name"] != "") {
         $_POST_filtered["product_image_url"] = uploadFIle($_FILES["product_image"]);
     }
 
