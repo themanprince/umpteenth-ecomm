@@ -21,18 +21,14 @@
                 const createFormField = (name, type) => {return {"name":name, "type":type}};
 
                 //change this variable if you wish to change the frontend of things uploaded
-                const formFields = [createFormField("name", "text"), createFormField("price", "number"), createFormField("description", "textarea"), createFormField("quantity_avail", "number"), createFormField("image", "file")];
+                const formFields = [createFormField("name", "text"), createFormField("price", "number"), createFormField("description", "text"), createFormField("quantity_avail", "number"), createFormField("image", "file")];
 
                 const formFieldsTemplateString = `
                     ${formFields.map(field => {
                         return `
                             <div class="col-12 my-3 my-sm-2">
                                 <label class="form-label" for="product-${field.name}">Product ${field.name}</label><br/>
-                                ${(field.type == "textarea")?
-                                    `<textarea required name="product_${field.name}"></textarea>`
-                                    :
-                                    `<input required class="form-control" type="${field.type}" name="product_${field.name}" placeholder="Enter Product ${field.name}" ${(field.type == "file")? "accept=\".jpg, .jpeg, .png\"":""}/>`
-                                }                          
+                                <input required class="form-control" type="${field.type}" name="product_${field.name}" placeholder="Enter Product ${field.name}" ${(field.type == "file")? "accept=\".jpg, .jpeg, .png\"":""}/>
                             </div>                   
                         `;
                     })

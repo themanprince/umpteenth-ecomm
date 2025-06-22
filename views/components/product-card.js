@@ -35,18 +35,19 @@ const createProductCard = ({product_id, product_name, product_price, product_ima
                             }
                             
                             #quantity {
-                                outline: none;
+                                border: none;
                                 border-block-end: 2px solid grey;
                                 transition: 1s;
                             }
 
-                            #quantity {
-                                border-block-end: 2px solid var(--bs-primary);
+                            #quantity:focus {
+                                outline: none;
+                                border-block-end: 2px solid var(--primary);
                             }
                         </style>
                         <div class="w-100 add-to-cart-interface p-3 row m-0">
                             <img src="${product_image_url}" id="product-img" class="col-12 col-md-6" />
-                            <div class="col-12 col-md-6 d-flex flex-column justify-content-around align-items-center align-items-md-start text-center text-md-left mt-3 mt-md-0">
+                            <div class="col-12 col-md-6 d-flex flex-column justify-content-around justify-content-md-center align-items-center align-items-md-start text-center text-md-left mt-3 mt-md-0">
                                 <div class="me-2">
                                     <small>${product_name}</small></br>
                                     <b>N${product_price}</b>
@@ -65,10 +66,11 @@ const createProductCard = ({product_id, product_name, product_price, product_ima
                         </div>
                     `,
             "width": "70%",
-            "height": "85%",
+            "height": "70%",
             "confirmButtonText": "Add To Cart",
+            "confirmButtonColor":"var(--info)",
             "showCancelButton": true,
-            "cancelButtonText": "Cancel"
+            "cancelButtonText": "Cancel",
         });        
     });
 

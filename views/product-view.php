@@ -42,7 +42,7 @@
                         <div class="container w-75 container-sm-fluid mx-auto">
                             <div class="row" id="form-fields-container">
                                 <?php
-                                    $keys_to_avoid = array("product_id", "product_image_url", "product_description", "is_hidden");
+                                    $keys_to_avoid = array("product_id", "product_image_url", "is_hidden");
                                     foreach ($product_properties as $key => $value) {
                                         if (in_array($key, $keys_to_avoid)) {
                                             continue;
@@ -56,10 +56,6 @@
                                     }
                                 ?>
                                 <input type="hidden" value="<?php echo($product_properties['product_id']) ?>" name="product_id" />
-                                <div class="col-12 my-3 my-sm-2">
-                                    <label class="form-label" >product_description</label><br/>
-                                    <textarea name="product_description" class="form-control"><?php echo($product_properties['product_description']); ?></textarea>
-                                </div>
                                 <div class="col-12 my-3 my-sm-2">
                                     <label class="form-label">product_image</label>
                                     <input type="file" name="product_image" class="form-control" accept=".png, .jpg, .jpeg" />

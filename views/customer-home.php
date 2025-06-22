@@ -33,7 +33,8 @@
             let product_details, product_node;
         </script>
             <?php
-                foreach ($_SESSION["products"] as $product) {
+                for ($i = 0; $i < count($_SESSION["products"]); $i++) {
+                    $product = $_SESSION["products"][$i];
             ?>
                 <script>
                         product_details = {
@@ -53,3 +54,7 @@
             ?>
     </body>
 </html>
+<?php
+    session_unset();
+    session_destroy();
+?>
