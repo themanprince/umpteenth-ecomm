@@ -3,6 +3,11 @@
 ?>
 
 <style>
+    #nav-container {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+    }
 
     #search-form {
         flex: 3;
@@ -51,7 +56,7 @@
 
 </style>
 
-<div class="containter-fluid fixed-top bg-light py-3">
+<div id="nav-container" class="containter-fluid bg-light py-3">
     <div class="row">
         <div class="col-1"></div>
         <div class="col-1"><img src="../<?php echo($site_logo_url) ?>" alt="logo" width="25" height="25"/></div>
