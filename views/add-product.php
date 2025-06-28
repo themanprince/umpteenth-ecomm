@@ -1,3 +1,7 @@
+<?php
+    require("../helpers/check-admin-login.php");
+    redirect_if_not_admin("customer-home.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

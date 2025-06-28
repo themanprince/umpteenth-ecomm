@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     require("../site_config.php");
 
     $data = json_decode(file_get_contents("php://input"), true);
