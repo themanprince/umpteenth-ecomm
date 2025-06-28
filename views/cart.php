@@ -75,8 +75,10 @@
             checkout_btn.addEventListener("click", async (e) => {
                 const getVal = (id) => document.getElementById(id).value;
                 const customer_name = getVal("customer-name"), customer_phone_number = getVal("customer-phone-number"), customer_address = getVal("customer-address"), customer_email = getVal("customer-email");
+                const amount = total;
+
                 const payload = {
-                    cart, customer_name, customer_phone_number, customer_address, customer_email
+                    cart, customer_name, customer_phone_number, customer_address, customer_email, amount
                 };                
 
                 const response = await fetch('../controllers/checkout-order.php', {
