@@ -67,7 +67,8 @@
             </form>
             <a href="../views/cart.php" id="cart-icon" class="col-2 position-relative d-block">
                 <div id="cart-notification-icon" class="position-absolute p-2 bg-danger rounded-circle" style="display: none"></div>
-                <img src="../icons/cart-icon.png"/>
+                <i class="flaticon-shopping-cart-black-shape fs-3"></i>
+                <!-- <img src="../icons/cart-icon.png"/> -->
             </a>
         </div>
     </div>
