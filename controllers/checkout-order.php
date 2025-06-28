@@ -4,8 +4,8 @@
     
     $db = new Database;
 
-
-    if ( ! isset($_GET["reference"])) { //because the current payment handler will send a 'reference' field to a given callback_url after each payment
+    //the current payment handler will send a 'reference' field to a given callback_url after each payment
+    if ( ! isset($_GET["reference"])) {
         $data = json_decode(file_get_contents("php://input"), true);
 
         $_SESSION["customer_name"] = $data["customer_name"];
@@ -14,8 +14,9 @@
         $_SESSION["customer_phone_number"] = $data["customer_phone_number"];
         $_SESSION["cart"] = $data["cart"];
         $_SESSION["amount"] = $data["amount"];
-
+        
         $payment = new Payment($_SESSION);
+        //next, follow up the payment using details from the $payment object
 
     } else {
         

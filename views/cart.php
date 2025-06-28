@@ -88,8 +88,7 @@
                 });
 
                 const responseText = await response.text();
-                console.log("responseText is");
-                console.log(responseText);
+                
                 Swal.fire(responseText);
             });
 
