@@ -48,7 +48,8 @@ const createProductCard = ({product_id, product_name, product_price, product_ima
                 },
             }).then(result => {
                 if(result.isConfirmed) {
-                    const product_details = {product_id, product_name, product_price, product_image_url, product_quantity_avail, product_description};
+                    const product_quantity_purchased = result.value.qty;
+                    const product_details = {product_id, product_name, product_price, product_image_url, product_quantity_purchased, product_quantity_avail, product_description};
                     if(sessionStorage.getItem("cart") == null)
                         sessionStorage.setItem("cart", JSON.stringify([{...product_details}]));
                     else {

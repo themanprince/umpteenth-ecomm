@@ -65,10 +65,10 @@
             <form id="search-form" class="col-9">
                 <input type="search" placeholder="search" name="product-name" id="search-input" class="w-100"/><button type="submit" id="submit-btn"><img src="../icons/search-icon.png" alt="search" id="search-icon" /></button>
             </form>
-            <div id="cart-icon" class="col-2 position-relative">
+            <a href="../views/cart.php" id="cart-icon" class="col-2 position-relative d-block">
                 <div id="cart-notification-icon" class="position-absolute p-2 bg-danger rounded-circle" style="display: none"></div>
                 <img src="../icons/cart-icon.png"/>
-            </div>
+            </a>
         </div>
     </div>
 </div>
