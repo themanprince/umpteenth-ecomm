@@ -75,30 +75,33 @@ const createProductCard = ({product_id, product_name, product_price, product_ima
                         `,
                 "width": "70%",
                 "confirmButtonText": "Add To Cart",
-                "confirmButtonColor":"var(--info)",
+                "confirmButtonColor":"var(--bs-info)",
                 "showCancelButton": true,
                 "cancelButtonText": "Cancel",
-            }).then(e => {
-                const quantity_to_buy_node = document.getElementById("quantity-to-buy");
-                const quantity_to_buy = quantity_to_buy_node.value;
-                if(!quantity_to_buy) {
-                    alert_sys.fire({
-                        "text":"Please Enter a valid Quantity"
-                    }).then(e => fire_add_to_cart_modal());
-                }
+            }).then(result => {
+                if (result.isConfirmed) {
+                    const quantity_to_buy_node = document.getElementById("quantity-to-buy");
+                    const quantity_to_buy = quantity_to_buy_node.value;
+                    if(!quantity_to_buy) {
+                        alert_sys.fire({
+                            "text":"Please Enter a valid Quantity"
+                        }).then(e => fire_add_to_cart_modal());
+                    }
 
-                const product_details = {product_id, product_name, product_price, product_image_url, product_quantity_avail, product_description};
-                if(sessionStorage.getItem("cart") == null)
-                    sessionStorage.setItem("cart", JSON.stringify([{...product_details}]));
-                else {
-                    cart = JSON.parse(sessionStorage.getItem("cart"));
-                    cart.push({...product_details});
-                    sessionStorage.setItem("cart", JSON.stringify(cart));
-                }
+                    const product_details = {product_id, product_name, product_price, product_image_url, product_quantity_avail, product_description};
+                    if(sessionStorage.getItem("cart") == null)
+                        sessionStorage.setItem("cart", JSON.stringify([{...product_details}]));
+                    else {
+                        cart = JSON.parse(sessionStorage.getItem("cart"));
+                        cart.push({...product_details});
+                        sessionStorage.setItem("cart", JSON.stringify(cart));
+                    }
 
-                document.getElementById("cart-icon")
-                    .dispatchEvent(new Event("cartModified"));
-            });
+                    document.getElementById("cart-icon")
+                        .dispatchEvent(new Event("cartModified"));
+            }
+         });
+       
         }
 
         fire_add_to_cart_modal();

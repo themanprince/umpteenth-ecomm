@@ -4,27 +4,44 @@
 // as well as the
 // ADD-TO-CART interface
 ?>
+
 <script>
 const createProductCard = ({product_id, product_name, product_price, product_image_url, product_quantity_avail, product_description}, alert_sys) => {
-    const style = `
-        display: flex;
-        flex-direction: column;
-        margin-block-end: 2rem;
-    `;
-
     const container = document.createElement("div");
-    container.setAttribute("style", style);
-    container.setAttribute("class", "col-md-3 col-6");
+    container.setAttribute("class", "col-12 col-md-4 mb-4");
 
     const productTemplate = `
-        <img src="${product_image_url}" id="product_img" class="me-1 w-100 h-100" style="border-radius: 30px;" />
-        <em>${product_name}</em>
-        <b class="me-2">N${product_price}</b>
-        <button class="add-to-cart btn btn-dark text-light rounded w-auto py-1">Add To Cart</button>
+            <div class="card h-100">
+                <a href="">
+                    <img src="${product_image_url}" class="card-img-top" alt="${product_name}" width="150" height="200">
+                </a>
+                <div class="card-body">
+                    <ul class="list-unstyled d-flex justify-content-between">
+                        <li>
+                            <i class="text-muted fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                        </li>
+                        <li class="text-muted text-right">N${product_price}</li>
+                    </ul>
+                    <a href="shop-single.html" class="h2 text-decoration-none text-dark">${product_name}</a>
+                    <p class="card-text">
+                        ${product_description}
+                    </p>
+                    <p class="text-muted">Quantity Available (${product_quantity_avail})</p>
+                </div>
+            </div>
     `;
+        // `<img src="${product_image_url}" id="product_img" class="me-1 w-100 h-100" style="border-radius: 30px;" />
+        // <em>${product_name}</em>
+        // <b class="me-2">N${product_price}</b>
+        // <button class="add-to-cart btn btn-dark text-light rounded w-auto py-1">Add To Cart</button>`
+    
 
     container.innerHTML = productTemplate;
-    container.getElementsByClassName("add-to-cart")[0].addEventListener("click", e => {
+    container./*getElementsByClassName("add-to-cart")[0].*/addEventListener("click", e => {
         function fire_add_to_cart_modal() {
             alert_sys.fire({
                 "html": `
