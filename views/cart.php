@@ -25,21 +25,20 @@
                 <div class="p-3 border rounded row">
                     <div class="col-6 col-sm-6 col-md-3">
                         <label for="customer-name">Full Name</label>
-                        <input type="text" id="customer-name" placeholder="Full Name" class="form-control"/>
+                        <input type="text" id="customer-name" placeholder="Full Name" class="form-control" required />
                     </div>
                     <div class="col-6 col-sm-6 col-md-3">
                         <label for="customer-phone-number">Phone Number</label>
-                        <input type="text" id="customer-phone-number" placeholder="Phone Number" class="form-control"/>
+                        <input type="text" id="customer-phone-number" placeholder="Phone Number" class="form-control" required />
                     </div>
                     <div class="col-6 col-sm-6 col-md-3">
                         <label for="customer-addres">Delivery Address</label>
-                        <input type="text" id="customer-address" placeholder="Your Address" class="form-control"/>
+                        <input type="text" id="customer-address" placeholder="Your Address" class="form-control" required />
                     </div>
                     <div class="col-6 col-sm-6 col-md-3">
                         <label for="customer-email">Email Address</label>
-                        <input type="text" id="customer-email" placeholder="Enter Your Email" class="form-control"/>
-                    </div>
-                
+                        <input type="email" id="customer-email" placeholder="Enter Your Email" class="form-control" required />
+                    </div>                
                     
                 </div>
                 <button id="checkout-btn" class="text-end btn btn-dark text-light">Checkout Cart</button>
@@ -78,7 +77,7 @@
                 const customer_name = getVal("customer-name"), customer_phone_number = getVal("customer-phone-number"), customer_address = getVal("customer-address"), customer_email = getVal("customer-email");
                 const payload = {
                     cart, customer_name, customer_phone_number, customer_address, customer_email
-                };
+                };                
 
                 const response = await fetch('../controllers/checkout-order.php', {
                     "method": "POST",
@@ -86,7 +85,7 @@
                     "body": JSON.stringify(payload)
                 });
 
-                const responseText = response.text();
+                const responseText = await response.text();
                 console.log("responseText is");
                 console.log(responseText);
                 Swal.fire(responseText);
