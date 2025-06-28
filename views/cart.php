@@ -8,7 +8,7 @@
     <body>
         <div class="container py-4">
             <h4>Your Cart</h4>
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Item</th>
@@ -21,8 +21,32 @@
                 </tbody>
             </table>
             <div class="text-end fw-bold" id="cart-total"></div>
+            <form id="checkout-form" style="display: none">
+                <div class="p-3 border rounded row">
+                    <div class="col-6 col-sm-6 col-md-3">
+                        <label for="customer-name">Full Name</label>
+                        <input type="text" id="customer-name" placeholder="Full Name" class="form-control"/>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3">
+                        <label for="customer-phone-number">Phone Number</label>
+                        <input type="text" id="customer-phone-number" placeholder="Phone Number" class="form-control"/>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3">
+                        <label for="customer-addres">Delivery Address</label>
+                        <input type="text" id="customer-address" placeholder="Your Address" class="form-control"/>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3">
+                        <label for="customer-email">Email Address</label>
+                        <input type="text" id="customer-email" placeholder="Enter Your Email" class="form-control"/>
+                    </div>
+                
+                    
+                </div>
+                <button id="checkout-btn" class="text-end btn btn-dark text-light">Checkout Cart</button>
+            </form>
         </div>
         
+        <script src="../lib/js/sweetalert.js"></script>
         <script>
             const cart = JSON.parse(sessionStorage.getItem('cart') || "[]");
             let total = 0, cartTemplate = '';
@@ -42,8 +66,35 @@
                 
             });
 
-            document.getElementById("cart-items").innerHTML = cartTemplate || `<b class="text-center fw-bold h5">No Item in Cart</b>`;
+            document.getElementById("cart-items").innerHTML = (cart.length > 0) ? cartTemplate : `<b class="text-center fw-bold h5">No Item in Cart</b>`;
             document.getElementById("cart-total").innerText = "Total: N" + total;
+            const checkout_btn = document.getElementById("checkout-btn"),
+                checkout_form = document.getElementById("checkout-form");
+            
+            checkout_form.addEventListener("submit", e => e.preventDefault());
+
+            checkout_btn.addEventListener("click", async (e) => {
+                const getVal = (id) => document.getElementById(id).value;
+                const customer_name = getVal("customer-name"), customer_phone_number = getVal("customer-phone-number"), customer_address = getVal("customer-address"), customer_email = getVal("customer-email");
+                const payload = {
+                    cart, customer_name, customer_phone_number, customer_address, customer_email
+                };
+
+                const response = await fetch('../controllers/checkout-order.php', {
+                    "method": "POST",
+                    "headers": {"Content-Type": "application/json"},
+                    "body": JSON.stringify(payload)
+                });
+
+                const responseText = response.text();
+                console.log("responseText is");
+                console.log(responseText);
+                Swal.fire(responseText);
+            });
+
+            if(cart.length > 0)
+                checkout_form.style.display = "block";
+
         </script>
     </body>
     </html>
