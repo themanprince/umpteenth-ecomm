@@ -21,7 +21,7 @@
                 $total = 0;
         ?>
         <div class="container py-4">
-            <h4>Order For <?php echo($order_details["customer_name"]); ?></h4>
+            <h4 class="text-primary fw-bold text-center">Order For <?php echo($order_details["customer_name"]); ?></h4>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -50,7 +50,7 @@
             </table>
             <div class="text-end fw-bold" id="order-total"><?php echo($total); ?></div>
             <div class="container">
-                <div class="col-12">
+                <div class="col-12 fw-bold h3 text-danger">
                     <?php echo((($order_details['is_completed'] == "1")? "Order Completed" : "<a class='btn btn-secondary' href='../controllers/mark-order-complete.php?order_id=" . $order_id . "'>Mark as Completed</a>")); ?>
                 </div>
             </div>

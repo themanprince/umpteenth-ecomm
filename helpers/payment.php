@@ -10,13 +10,15 @@
         function __construct($payload/* no pun intended */) {
             global $payment_gateway_secret_key;
             global $payment_gateway_url;
+            global $host_and_port;
 
             $customer_email = $payload["customer_email"];
             $amount = $payload["amount"];
 
             $fields = [
-                "customer_email" => $customer_email,
-                "amount" => $amount
+                "email" => $customer_email,
+                "amount" => $amount,
+                "callback_url" => "http://" . $host_and_port . "/controllers/checkout-order.php"
             ];
 
             $fields_string = http_build_query($fields);
@@ -33,10 +35,11 @@
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
             $result = curl_exec($ch);
-
-            echo("got here, result is");
-            echo($result);
-            //next, use $result to set class fields
+           
+            $data = $result["data"];
+            $this -> $reference = $data["reference"];
+            $this -> $access_code = $data["access_code"];
+            $this -> $authorization_url = $data["authorization_url"];
         }
 
     }

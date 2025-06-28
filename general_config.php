@@ -5,4 +5,5 @@
     
     $payment_gateway_url = "https://api.paystack.co/transaction/initialize";
     $payment_gateway_secret_key = "sk_test_13de65997fc769cb0a5e7f2f30d8b435541c342e";
+    $host_and_port = "http://localhost:80";
 ?>

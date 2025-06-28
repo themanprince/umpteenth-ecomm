@@ -16,7 +16,8 @@
         $_SESSION["amount"] = $data["amount"];
         
         $payment = new Payment($_SESSION);
-        //next, follow up the payment using details from the $payment object
+        echo(json_encode(array("access_code" => $payment -> $access_code)));
+        exit();
 
     } else {
         
@@ -34,7 +35,4 @@
         }
     }
 
-    
-
-    echo("Order Completed Successfully");
 ?>

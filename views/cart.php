@@ -46,6 +46,7 @@
         </div>
         
         <script src="../lib/js/sweetalert.js"></script>
+        <script src="../lib/js/paystack-inline.js"></script>
         <script>
             const cart = JSON.parse(sessionStorage.getItem('cart') || "[]");
             let total = 0, cartTemplate = '';
@@ -73,6 +74,8 @@
             checkout_form.addEventListener("submit", e => e.preventDefault());
 
             checkout_btn.addEventListener("click", async (e) => {
+                checkout_btn.innerHTML = `<img src="../icons/ajax-loader.gif" />`;
+
                 const getVal = (id) => document.getElementById(id).value;
                 const customer_name = getVal("customer-name"), customer_phone_number = getVal("customer-phone-number"), customer_address = getVal("customer-address"), customer_email = getVal("customer-email");
                 const amount = total;
@@ -88,8 +91,12 @@
                 });
 
                 const responseText = await response.text();
-                
-                Swal.fire(responseText);
+
+                Swal.fire(responseText).then(e => {
+                    const {access_code} = JSON.parse(responseText);
+                    const popup = new PaystackPop();
+                    popup.resumeTransaction(access_code);
+                });
             });
 
             if(cart.length > 0)
