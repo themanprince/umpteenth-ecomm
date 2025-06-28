@@ -5,4 +5,7 @@
     $site_logo_url = "icons/favico.jpg"; #as pf now, it should be a local image stored on the server
 
     $product_out_of_stock_text = "Out of Stock";
+
+    $admin_username = "prechito";
+    $admin_password = "12345";
 ?>

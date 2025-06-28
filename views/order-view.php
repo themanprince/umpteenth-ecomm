@@ -21,7 +21,7 @@
                 $total = 0;
         ?>
         <div class="container py-4">
-            <h4 class="text-primary fw-bold text-center">Order For <?php echo($order_details["customer_name"]); ?></h4>
+            <h4 class="text-dark fw-bold text-center text-decoration-underline">Order For <?php echo($order_details["customer_name"]); ?></h4>
             <table class="table table-striped">
                 <thead>
                     <tr>

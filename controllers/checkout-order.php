@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     require("../database.php");
     require("../helpers/payment.php");
     

@@ -92,11 +92,9 @@
 
                 const responseText = await response.text();
 
-                Swal.fire(responseText).then(e => {
-                    const {access_code} = JSON.parse(responseText);
-                    const popup = new PaystackPop();
-                    popup.resumeTransaction(access_code);
-                });
+                const {access_code} = JSON.parse(responseText);
+                const popup = new PaystackPop();
+                popup.resumeTransaction(access_code);                
             });
 
             if(cart.length > 0)
