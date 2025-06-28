@@ -23,8 +23,8 @@
             <h2><?php echo($site_name) ?></h2>
             <small><?php echo($site_tagline) ?></small>
         </div>
-        <div class="container">
-            <div id="product-block" class="row mx-2 mt-4 gx-2 gy-2">   
+        <div class="container py-4">
+            <div id="product-block" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">   
             </div>
         </div>
 
