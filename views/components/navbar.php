@@ -66,9 +66,8 @@
                 <input type="search" placeholder="search" name="product-name" id="search-input" class="w-100"/><button type="submit" id="submit-btn"><img src="../icons/search-icon.png" alt="search" id="search-icon" /></button>
             </form>
             <a href="../views/cart.php" id="cart-icon" class="col-2 position-relative d-block">
-                <div id="cart-notification-icon" class="position-absolute p-2 bg-danger rounded-circle" style="display: none"></div>
+                <div id="cart-notification-icon" class="position-absolute start-100 p-2 bg-danger rounded-circle" style="display: none"></div>
                 <i class="flaticon-shopping-cart-black-shape fs-3"></i>
-                <!-- <img src="../icons/cart-icon.png"/> -->
             </a>
         </div>
     </div>

@@ -34,12 +34,20 @@
             ));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-            $result = curl_exec($ch);
+            $result = json_decode(curl_exec($ch));
+            $error = curl_error($ch);
+
+            if ($error) {
+                echo("Curl Error");
+                echo($error);
+                exit();
+            } else {
+                $data = $result["data"];
+                $this -> $reference = $data["reference"];
+                $this -> $access_code = $data["access_code"];
+                $this -> $authorization_url = $data["authorization_url"];
+            }
            
-            $data = $result["data"];
-            $this -> $reference = $data["reference"];
-            $this -> $access_code = $data["access_code"];
-            $this -> $authorization_url = $data["authorization_url"];
         }
 
     }

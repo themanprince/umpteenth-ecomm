@@ -8,8 +8,4 @@
     <link rel="shortcut icon" type="image/x-icon" href="../<?php echo($site_logo_url) ?>">
 
     <link rel="stylesheet" href="../lib/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../lib/css/templatemo.css" />
-    <link rel="stylesheet" href="../lib/css/custom.css" />
-
-    <link rel="stylesheet" href="../lib/css/fontawesome.min.css" />
     <link rel="stylesheet" href="../lib/css/flaticon.css" />

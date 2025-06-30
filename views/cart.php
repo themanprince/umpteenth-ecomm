@@ -74,7 +74,7 @@
             checkout_form.addEventListener("submit", e => e.preventDefault());
 
             checkout_btn.addEventListener("click", async (e) => {
-                checkout_btn.innerHTML = `<img src="../icons/ajax-loader.gif" />`;
+                checkout_btn.innerHTML = `<img src="../icons/ajax-loader.gif" alt="...loading..."/>`;
 
                 const getVal = (id) => document.getElementById(id).value;
                 const customer_name = getVal("customer-name"), customer_phone_number = getVal("customer-phone-number"), customer_address = getVal("customer-address"), customer_email = getVal("customer-email");
@@ -91,10 +91,10 @@
                 });
 
                 const responseText = await response.text();
-
-                const {access_code} = JSON.parse(responseText);
-                const popup = new PaystackPop();
-                popup.resumeTransaction(access_code);                
+                window.alert("responseText is " + responseText);
+                //const {access_code} = JSON.parse(responseText);
+                //const popup = new PaystackPop();
+                //popup.resumeTransaction(access_code);                
             });
 
             if(cart.length > 0)
