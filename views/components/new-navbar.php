@@ -46,13 +46,14 @@
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="cart.php">Your Cart</a>
+                                    <a class="nav-link" href="../views/cart.php">Your Cart</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="hearer_icon d-flex align-items-center">
                             <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <a href="cart.php">
+                            <a href="../views/cart.php" id="cart-icon" class="col-2 position-relative d-block">
+                                <div id="cart-notification-icon" class="position-absolute start-100 p-2 bg-danger rounded-circle" style="display: none"></div>
                                 <i class="flaticon-shopping-cart-black-shape"></i>
                             </a>
                         </div>
