@@ -23,5 +23,5 @@
     <link rel="stylesheet" href="../lib/css/slick.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="../lib/css/style.css">
-    <link rel="stylesheet" href="lib/css/templatemo.css">
-    <link rel="stylesheet" href="lib/css/custom.css">
+    <link rel="stylesheet" href="../lib/css/templatemo.css">
+    <link rel="stylesheet" href="../lib/css/custom.css">
