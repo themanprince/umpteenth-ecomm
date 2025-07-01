@@ -78,7 +78,8 @@
 
                 const getVal = (id) => document.getElementById(id).value;
                 const customer_name = getVal("customer-name"), customer_phone_number = getVal("customer-phone-number"), customer_address = getVal("customer-address"), customer_email = getVal("customer-email");
-                const amount = total;
+                const amount = String(total) + "00";
+                
 
                 const payload = {
                     cart, customer_name, customer_phone_number, customer_address, customer_email, amount
@@ -91,7 +92,7 @@
                 });
 
                 const responseText = await response.text();
-                window.alert("responseText is " + responseText);
+                
                 const {access_code} = JSON.parse(responseText);
                 const popup = new PaystackPop();
                 popup.resumeTransaction(access_code);
