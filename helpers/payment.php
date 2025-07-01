@@ -1,5 +1,4 @@
 <?php
-    require("../general_config.php");
 
     class Payment {
         
@@ -7,7 +6,7 @@
         public $access_code;
         public $reference;
 
-        function __construct($payload/* no pun intended */) {
+        function __construct($payload/* no pun intended */, $callback_url) {
             global $payment_gateway_secret_key;
             global $payment_gateway_url;
             global $host_and_port;
@@ -18,7 +17,7 @@
             $fields = [
                 "email" => $customer_email,
                 "amount" => $amount,
-                "callback_url" => "http://" . $host_and_port . "/controllers/checkout-order.php"
+                "callback_url" => $callback_url
             ];
 
             $fields_string = http_build_query($fields);
@@ -42,10 +41,10 @@
                 echo($error);
                 exit();
             } else {
-                $data = $result["data"];
-                $this -> $reference = $data["reference"];
-                $this -> $access_code = $data["access_code"];
-                $this -> $authorization_url = $data["authorization_url"];
+                $data = $result -> data;
+                $this->reference = $data -> reference;
+                $this->access_code = $data -> access_code;
+                $this->authorization_url = $data -> authorization_url;
             }
            
         }

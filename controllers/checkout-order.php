@@ -3,6 +3,7 @@
     
     require("../database.php");
     require("../helpers/payment.php");
+    require("../general_config.php");
     
     $db = new Database;
 
@@ -17,8 +18,8 @@
         $_SESSION["cart"] = $data["cart"];
         $_SESSION["amount"] = $data["amount"];
         
-        $payment = new Payment($_SESSION);
-        echo(json_encode(array("access_code" => $payment -> $access_code)));
+        $payment = new Payment($_SESSION, "http://" . $host_and_port . "/controllers/checkout-order.php");
+        echo(json_encode(array("access_code" => $payment->access_code)));
         exit();
 
     } else {

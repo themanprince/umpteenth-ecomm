@@ -92,9 +92,11 @@
 
                 const responseText = await response.text();
                 window.alert("responseText is " + responseText);
-                //const {access_code} = JSON.parse(responseText);
-                //const popup = new PaystackPop();
-                //popup.resumeTransaction(access_code);                
+                const {access_code} = JSON.parse(responseText);
+                const popup = new PaystackPop();
+                popup.resumeTransaction(access_code);
+                
+                checkout_btn.innerHTML = "Checkout Cart";
             });
 
             if(cart.length > 0)
