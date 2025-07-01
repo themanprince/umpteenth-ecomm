@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="banner_img">
-            <img src="<?php echo($homepage_banner_img_url); ?>" alt="#" class="img-fluid">
+            <img src="<?php echo("../" . $homepage_banner_img_url); ?>" alt="#" class="img-fluid">
             <img src="../banner_pattern.png " alt="#" class="pattern_img img-fluid">
         </div>
     </section>
