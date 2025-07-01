@@ -19,7 +19,7 @@
         ?>
     </head>
     <body>
-        <?php require("components/navbar.php"); ?>
+        <?php require("components/new-navbar.php"); ?>
         <div class="container-fluid bg-primary py-4 px-auto my-sm-0 my-md-1 text-center text-light pt-4">
             <h2><?php echo($site_name) ?></h2>
             <small><?php echo($site_tagline) ?></small>
