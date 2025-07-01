@@ -2,7 +2,7 @@
 
     session_start();
 
-    //PLEASE FIRST VERIFY THE STATUS OF THE TRANSACTION BEFORE CONTINUING WITH STORING IT IN DB
+    // #TODO - PLEASE FIRST VERIFY THE STATUS OF THE TRANSACTION BEFORE STORING IT IN DB
     
     $order_info = array("customer_name" => $_SESSION["customer_name"], "customer_address" => $_SESSION["customer_address"], "customer_email" => $_SESSION["customer_email"], "customer_phone_number" => $_SESSION["customer_phone_number"]);
     $order_id = $db -> db_insert("orders", $order_info);

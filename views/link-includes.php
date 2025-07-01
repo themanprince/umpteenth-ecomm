@@ -1,6 +1,4 @@
 <!-- so I don't have to retype these everytime -->
- <?php include("../site_config.php"); ?>
-    <title><?php echo($site_name) ?></title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 

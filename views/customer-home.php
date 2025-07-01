@@ -13,8 +13,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <title><?php echo($site_name) ?></title>
         <?php
-            include("title-and-meta.php");
+            include("link-includes.php");
         ?>
     </head>
     <body>
@@ -29,6 +30,9 @@
         </div>
 
         <script src="../lib/js/sweetalert.js"></script>
+        <?php
+            require("script-includes.php");
+        ?>
         <script src="components/product_card.js"></script>
         <script>
             const product_block = document.getElementById("product-block");
