@@ -53,8 +53,8 @@
                         <div class="hearer_icon d-flex align-items-center">
                             <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
                             <a href="../views/cart.php" id="cart-icon" class="col-2 position-relative d-block">
-                                <div id="cart-notification-icon" class="position-absolute start-100 p-2 bg-danger rounded-circle" style="display: none"></div>
-                                <i class="flaticon-shopping-cart-black-shape"></i>
+                                <div id="cart-notification-icon" class="position-absolute start-100 p-1 bg-danger rounded-circle" style="display: none"></div>
+                                <i class="flaticon-shopping-cart-black-shape mx-0"></i>
                             </a>
                         </div>
                     </nav>

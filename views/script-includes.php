@@ -20,7 +20,6 @@
     <script src="../lib/js/mail-script.js"></script>
     <!-- custom js -->
     <script src="../lib/js/custom.js"></script>
-    <script src="../lib/js/jquery-1.11.0.min.js"></script>
     <script src="../lib/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/templatemo.js"></script>

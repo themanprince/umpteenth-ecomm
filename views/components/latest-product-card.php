@@ -12,7 +12,7 @@
         <img class="card-img rounded-0 img-fluid" src="<?php echo($product_image_url); ?>" style="block-size: 15em;">
         <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
             <ul class="list-unstyled">
-                <li><a onclick="fire_add_to_cart_modal('<?php echo($product_name); ?>', '<?php echo($product_image_url); ?>', '<?php echo($product_price); ?>', '<?php echo($product_desc); ?>', '<?php echo($product_qty_avail); ?>', Swal)" id="<?php echo($product_id); ?>" class="btn btn-success text-white mt-2"><i class="fas fa-cart-plus"></i></a></li>
+                <li><a onclick="fire_add_to_cart_modal('<?php echo($product_id); ?>', '<?php echo($product_name); ?>', '<?php echo($product_image_url); ?>', '<?php echo($product_price); ?>', '<?php echo($product_desc); ?>', '<?php echo($product_qty_avail); ?>', Swal)" id="<?php echo($product_id); ?>" class="btn btn-success text-white mt-2"><i class="fas fa-cart-plus"></i></a></li>
             </ul>
         </div>
     </div>
