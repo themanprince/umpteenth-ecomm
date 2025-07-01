@@ -6,7 +6,7 @@
 
     $db = new Database;
 
-    $product_limit = 20;
+    $product_limit = 10; #latest products
     $_SESSION["products"] = $db -> db_queryresult("SELECT * FROM products WHERE is_hidden = '0' LIMIT " . $product_limit . ";");
 ?>
 
@@ -23,40 +23,38 @@
         <?php require("components/new-navbar.php"); ?>
         
         <?php require("components/banner.php"); ?>
-        <div class="container py-4">
-            <div id="product-block" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">   
+        
+        <section class="trending_items" id="customer-home.php#latest-products">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section_tittle text-center">
+                            <h2>Latest Products</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">                    
+                    <?php
+                        for ($i = 0; $i < count($_SESSION["products"]); $i++) {
+                            $product = $_SESSION["products"][$i];
+                    ?>
+                            <div class="col-lg-4 col-sm-6">
+                                <?php require("components/latest-product-card.php"); ?>
+                            </div>
+                    <?php
+                        }
+                    ?>                    
+                </div>
             </div>
-        </div>
+        </section>
+        
 
         <script src="../lib/js/sweetalert.js"></script>
         <?php
             require("script-includes.php");
         ?>
-        <script src="components/product_card.js"></script>
-        <script>
-            const product_block = document.getElementById("product-block");
-            let product_details, product_node;
-        </script>
-            <?php
-                for ($i = 0; $i < count($_SESSION["products"]); $i++) {
-                    $product = $_SESSION["products"][$i];
-            ?>
-                <script>
-                        product_details = {
-                            "product_id": "<?php echo($product['product_id']); ?>",
-                            "product_name": "<?php echo($product['product_name']); ?>",
-                            "product_price": "<?php echo($product['product_price']); ?>",
-                            "product_image_url": "<?php echo($product['product_image_url']); ?>",
-                            "product_description": "<?php echo($product['product_description']); ?>",
-                            "product_quantity_avail": "<?php echo($product['product_quantity_avail']); ?>"
-                        };
-                        product_node = createProductCard(product_details, Swal);
-                        product_block.appendChild(product_node);
-                </script>
+        
             
-            <?php
-                }
-            ?>
         <script>
             function handle_cart_notification_icon() {
                 const length_of_cart = (JSON.parse(sessionStorage.getItem("cart")) || []).length;
