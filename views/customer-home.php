@@ -15,7 +15,7 @@
     <head>
         <title><?php echo($site_name) ?></title>
         <?php
-            include("link-includes.php");
+            require("link-includes.php");
         ?>
     </head>
     <body>
