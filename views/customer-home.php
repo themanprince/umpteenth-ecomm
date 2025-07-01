@@ -19,11 +19,9 @@
         ?>
     </head>
     <body>
+        
         <?php require("components/new-navbar.php"); ?>
-        <!-- <div class="container-fluid bg-primary py-4 px-auto my-sm-0 my-md-1 text-center text-light pt-4">
-            <h2><?php echo($site_name) ?></h2>
-            <small><?php echo($site_tagline) ?></small>
-        </div> -->
+        
         <?php require("components/banner.php"); ?>
         <div class="container py-4">
             <div id="product-block" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">   
