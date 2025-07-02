@@ -24,7 +24,7 @@
         
         <?php require("components/banner.php"); ?>
         
-        <section class="trending_items" id="customer-home.php#latest-products">
+        <section class="trending_items" id="latest-products">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">

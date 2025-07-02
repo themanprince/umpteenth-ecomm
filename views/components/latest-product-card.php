@@ -20,7 +20,6 @@
         <a href="shop-single.html" class="h3 text-decoration-none"><?php echo($product_name); ?></a>
         <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
             <li><small style="line-height: 1.15;"><?php echo($product_desc); ?></small></li>
-            
         </ul>
         <ul class="list-unstyled d-flex justify-content-center mb-1">
             <li>

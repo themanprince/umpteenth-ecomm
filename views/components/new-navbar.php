@@ -27,8 +27,8 @@
                                         Products
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                        <a class="dropdown-item" href="product_list.html"> All Products</a>
-                                        <a class="dropdown-item" href="single-product.html">Latest Products</a>                                        
+                                        <a class="dropdown-item" href=""> All Products</a>
+                                        <a class="dropdown-item" href="customer-home.php#latest-products">Latest Products</a>                                        
                                     </div>
                                 </li>
                                 
