@@ -39,4 +39,9 @@
         const keys = Object.keys(cart);
         return keys.map(key => cart[key]);
     }
+
+    function clearCart() {
+        sessionStorage.setItem("cart", JSON.stringify({}));
+    }
+    
 </script>

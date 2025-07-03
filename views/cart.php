@@ -94,6 +94,7 @@
                     customer_name, customer_phone_number, customer_address, customer_email, amount
                 };         
                 
+                console.log("got here, cart in payload is", payload.cart);
 
                 const response = await fetch('../controllers/checkout-order.php', {
                     "method": "POST",
@@ -104,9 +105,14 @@
                 const responseText = await response.text();
                 
                 const {access_code} = JSON.parse(responseText);
-                const popup = new PaystackPop();
+
+                window.alert(`access_code is ${access_code}`);
+                // delete this and uncomment actual code block
+                window.location.href = "../controllers/payment-success-callback.php";
+
+                /* const popup = new PaystackPop();
                 popup.resumeTransaction(access_code);
-                
+                 */
                 checkout_btn.innerHTML = "Checkout Cart";
             });
 

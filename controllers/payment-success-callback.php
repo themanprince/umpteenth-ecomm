@@ -1,4 +1,8 @@
 <?php 
+    require_once("../helpers/notify-admin.php");
+    require_once("../database.php");
+
+    $db = new Database;
 
     session_start();
 
@@ -16,5 +20,8 @@
         
         $db -> db_insert("ordered_items", $payload);
     }
+    
+    notify_admin();
 
+    header("location:../views/order-status.php");
 ?>
