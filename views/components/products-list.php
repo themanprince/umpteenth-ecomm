@@ -19,3 +19,6 @@
         ?>                    
     </div>
 </div>
+<script src="../helpers/fire_add_to_cart_modal.js"></script>
+<script src="../lib/js/sweetalert.js"></script>
+        

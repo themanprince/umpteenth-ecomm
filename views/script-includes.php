@@ -24,4 +24,3 @@
     <script src="../lib/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/js/templatemo.js"></script>
     <script src="../lib/js/custom2.js"></script>
-    

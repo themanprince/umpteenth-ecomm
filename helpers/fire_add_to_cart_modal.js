@@ -49,6 +49,7 @@ function fire_add_to_cart_modal(product_id, product_name, product_image_url, pro
 
             document.getElementById("cart-icon")
                 .dispatchEvent(new Event("cartModified"));
+            console.log("In fire_add_to_cart, cart-icon is ", document.getElementById("cart-icon"));
         }
     });
     }
