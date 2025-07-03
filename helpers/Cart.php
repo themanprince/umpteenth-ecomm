@@ -31,4 +31,12 @@
 
         return 0;
     }
+
+    function getCartProductsList() { 
+        //before the cart was implemented as a dictionary data structure, it was originally an array and was sent to the backend like that as JSON
+        //this function serves to convert the cart data structure to this old form, in order for easy sending to the backend
+        const cart = getCart();
+        const keys = Object.keys(cart);
+        return keys.map(key => cart[key]);
+    }
 </script>

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <?php
-            require("title-and-meta.php");
+            require_once("title-and-meta.php");
         ?>
     </head>
     <body>
@@ -49,8 +49,10 @@
         
         <script src="../lib/js/sweetalert.js"></script>
         <script src="../lib/js/paystack-inline.js"></script>
+        <?php require_once("../helpers/Cart.php"); ?>
         <script>
-            const cart = JSON.parse(sessionStorage.getItem('cart') || "{}");
+            const cart = getCart();
+
             let total = 0, cartTemplate = '';
             
             const cart_keys = Object.keys(cart);
@@ -88,8 +90,10 @@
                 
 
                 const payload = {
-                    cart, customer_name, customer_phone_number, customer_address, customer_email, amount
-                };                
+                    "cart": getCartProductsList(),
+                    customer_name, customer_phone_number, customer_address, customer_email, amount
+                };         
+                
 
                 const response = await fetch('../controllers/checkout-order.php', {
                     "method": "POST",
@@ -106,7 +110,7 @@
                 checkout_btn.innerHTML = "Checkout Cart";
             });
 
-            if(cart.length > 0)
+            if(cartLength() > 0)
                 checkout_form.style.display = "block";
 
         </script>
