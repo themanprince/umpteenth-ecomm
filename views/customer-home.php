@@ -23,8 +23,9 @@
         <?php require("components/new-navbar.php"); ?>
         
         <?php require("components/banner.php"); ?>
+        
 
-        <section class="feature_part section_padding">
+        <section class="feature_part section_padding" id="about-us-section">
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-lg-6">
@@ -68,14 +69,14 @@
         </section>
         
         <section class="trending_items" id="latest-products">
-        <?php  
-           $section_title = "Trending Items";
-           $products = $_SESSION["products"];
+        <?php    
+            $section_title = "Latest Items";
+            $products = $_SESSION["products"];
 
-           require_once("components/products-list.php");
-        ?>
-            <div class="row text-center">
-                <a href="all-products.php" class="btn btn-success text-light px-4 py-2">See All Products -></a>
+            require_once("components/products-list.php");
+           ?>
+           <div class="row text-center">
+               <a href="all-products.php" class="btn btn-success text-light px-4 py-2">See All Products -></a>
             </div>
         </section>
         

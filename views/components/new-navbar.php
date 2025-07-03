@@ -19,7 +19,7 @@
                                     <a class="nav-link" href="customer-home.php">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">About</a>
+                                    <a class="nav-link" href="customer-home.php#about-us-section">About</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1"
@@ -27,7 +27,7 @@
                                         Products
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                        <a class="dropdown-item" href=""> All Products</a>
+                                        <a class="dropdown-item" href="all-products.php"> All Products</a>
                                         <a class="dropdown-item" href="customer-home.php#latest-products">Latest Products</a>                                        
                                     </div>
                                 </li>
