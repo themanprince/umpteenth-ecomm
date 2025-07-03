@@ -8,6 +8,11 @@
     </div>
     <div class="row">                    
         <?php
+            if(count($products) <= 0) {
+                echo("<h3>No Products</h3>");
+                exit();
+            }
+
             for ($i = 0; $i < count($products); $i++) {
                 $product = $products[$i];
         ?>
