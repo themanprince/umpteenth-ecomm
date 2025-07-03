@@ -25,26 +25,14 @@
         <?php require("components/banner.php"); ?>
         
         <section class="trending_items" id="latest-products">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section_tittle text-center">
-                            <h2>Latest Products</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">                    
-                    <?php
-                        for ($i = 0; $i < count($_SESSION["products"]); $i++) {
-                            $product = $_SESSION["products"][$i];
-                    ?>
-                            <div class="col-lg-3 col-md-3 col-sm-4">
-                                <?php require("components/latest-product-card.php"); ?>
-                            </div>
-                    <?php
-                        }
-                    ?>                    
-                </div>
+        <?php  
+           $section_title = "Trending Items";
+           $products = $_SESSION["products"];
+
+           require_once("components/products-list.php");
+        ?>
+            <div class="row text-center">
+                <a href="all-products.php" class="btn btn-success text-light px-4 py-2">See All Products -></a>
             </div>
         </section>
         
