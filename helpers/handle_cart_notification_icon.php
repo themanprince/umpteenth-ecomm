@@ -1,7 +1,7 @@
+<?php include("Cart.php"); ?>
 <script>
 function handle_cart_notification_icon() {
-    const length_of_cart = (JSON.parse(sessionStorage.getItem("cart")) || []).length;
-    if(length_of_cart > 0)
+    if(cartLength() > 0)
         document.getElementById("cart-notification-icon")
             .style.display = "block";
     else
