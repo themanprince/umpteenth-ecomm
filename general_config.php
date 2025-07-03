@@ -9,4 +9,5 @@
     $payment_gateway_secret_key = "sk_test_13de65997fc769cb0a5e7f2f30d8b435541c342e";
     $payment_callback_url = "http://" . $host_and_port . "/controllers/payment-success-callback.php";
 
+    $my_web_address = "http://princeadigwe.onrender.com";
 ?>

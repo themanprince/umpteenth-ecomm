@@ -1,7 +1,7 @@
 <?php
-    include("../site_config.php");
+    require_once("../site_config.php");
 ?>
-    <header class="main_menu home_menu">
+    <header id="header-comp" class="main_menu home_menu">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-12">
@@ -38,10 +38,10 @@
                                         Contact Us
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                        <a class="dropdown-item" href="">Whatsapp</a>
+                                        <a class="dropdown-item" href="http://wa.me/<?php echo($phone_number); ?>">Whatsapp</a>
                                         <a class="dropdown-item" href="">Facebook</a>
                                         <a class="dropdown-item" href="">Instagram</a>
-                                        <a class="dropdown-item" href="">LinkedIn</a>
+                                        <a class="dropdown-item" href="mailto:<?php echo($email_address) ?>">Email Us</a>
                                     </div>
                                 </li>
                                 
