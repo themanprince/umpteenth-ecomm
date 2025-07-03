@@ -5,8 +5,6 @@
     require("../database.php");
 
     $db = new Database;
-
-    $_SESSION["products"] = $db -> db_queryresult("SELECT * FROM products WHERE is_hidden = '0'; ");
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +22,7 @@
         <section id="all-products">
         <?php  
            $section_title = "All Products";
-           $products = $_SESSION["products"];
+            $products = $db -> db_queryresult("SELECT * FROM products WHERE is_hidden = '0'; ");
 
            require_once("components/products-list.php");
         ?>

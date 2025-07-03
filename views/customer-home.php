@@ -5,9 +5,6 @@
     require("../database.php");
 
     $db = new Database;
-
-    $product_limit = 10; #latest products
-    $_SESSION["products"] = $db -> db_queryresult("SELECT * FROM products WHERE is_hidden = '0' LIMIT " . $product_limit . ";");
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +68,8 @@
         <section class="trending_items" id="latest-products">
         <?php    
             $section_title = "Latest Items";
-            $products = $_SESSION["products"];
+            $product_limit = 4; #latest products
+            $products = $db -> db_queryresult("SELECT * FROM products WHERE is_hidden = '0' LIMIT " . $product_limit . ";");
 
             require_once("components/products-list.php");
            ?>
