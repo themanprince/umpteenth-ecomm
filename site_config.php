@@ -8,6 +8,8 @@
     $phone_number = "2347039092189";
     $email_address = "preciousadigwe99@gmail.com";
 
+    $about_us_text = "Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources. Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness.";
+
     $product_out_of_stock_text = "Out of Stock";
 
     $admin_username = "prechito";

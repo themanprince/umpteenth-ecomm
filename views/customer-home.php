@@ -34,32 +34,32 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="feature_part_content">
-                            <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources. Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness.</p>
+                            <p><?php echo($about_us_text); ?></p>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-3 col-sm-6">
                         <div class="single_feature_part">
-                            <img src="img/icon/feature_icon_1.svg" alt="#">
+                            <img src="../icons/feature_icon_1.svg" alt="#">
                             <h4>Credit Card Support</h4>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="single_feature_part">
-                            <img src="img/icon/feature_icon_2.svg" alt="#">
+                            <img src="../icons/feature_icon_2.svg" alt="#">
                             <h4>Online Order</h4>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="single_feature_part">
-                            <img src="img/icon/feature_icon_3.svg" alt="#">
-                            <h4>Free Delivery</h4>
+                            <img src="../icons/feature_icon_3.svg" alt="#">
+                            <h4>Fast Delivery</h4>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="single_feature_part">
-                            <img src="img/icon/feature_icon_4.svg" alt="#">
+                            <img src="../icons/feature_icon_4.svg" alt="#">
                             <h4>Product with Gift</h4>
                         </div>
                     </div>
