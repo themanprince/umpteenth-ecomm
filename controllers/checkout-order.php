@@ -16,7 +16,7 @@
     $_SESSION["cart"] = $data["cart"];
     $_SESSION["amount"] = $data["amount"];
     
-    $payment = new Payment($_SESSION, $payment_callback_url); //I prototyped this.. check that I have undone that
+    $payment = new Payment($_SESSION, $payment_callback_url);
     echo(json_encode(array("access_code" => $payment->access_code)));  //the client will use the access code to complete the payment then redirection will be done to a specified url on our server
     exit();
 

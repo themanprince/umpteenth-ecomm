@@ -13,11 +13,8 @@
 
             $customer_email = $payload["customer_email"];
             $amount = $payload["amount"];
-
-            #delete this and uncomment the block of actual code
-            $this -> access_code = "random_access_code";
-
-/*             $fields = [
+            
+            $fields = [
                 "email" => $customer_email,
                 "amount" => $amount,
                 "callback_url" => $callback_url
@@ -48,9 +45,8 @@
                 $this->reference = $data -> reference;
                 $this->access_code = $data -> access_code;
                 $this->authorization_url = $data -> authorization_url;
-            }
-           
- */        }
+            }           
+        }
 
     }
 ?>

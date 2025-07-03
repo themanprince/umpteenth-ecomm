@@ -30,8 +30,8 @@
         
         <?php require_once("components/footer.php"); ?>
 
-        <?php include("../helpers/fire_add_to_cart_modal.php") ?>
-        <?php include("../helpers/handle_cart_notification_icon.php") ?>        
+        <?php require_once("../helpers/fire_add_to_cart_modal.php") ?>
+        <?php require_once("../helpers/handle_cart_notification_icon.php") ?>        
         <script src="../lib/js/sweetalert.js"></script>
         <?php
             require("script-includes.php");

@@ -106,13 +106,9 @@
                 
                 const {access_code} = JSON.parse(responseText);
 
-                window.alert(`access_code is ${access_code}`);
-                // delete this and uncomment actual code block
-                window.location.href = "../controllers/payment-success-callback.php";
-
-                /* const popup = new PaystackPop();
+                const popup = new PaystackPop();
                 popup.resumeTransaction(access_code);
-                 */
+                
                 checkout_btn.innerHTML = "Checkout Cart";
             });
 

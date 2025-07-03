@@ -40,9 +40,9 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none" href="#">Home</a></li>
                         <li><a class="text-decoration-none" href="customer-home.php#about-us-section">About Us</a></li>
-                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
-                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
+                        <li><a class="text-decoration-none" href="all-products.php">All Products</a></li>
+                        <li><a class="text-decoration-none" href="cart.php">Your Cart</a></li>
+                        <li><a class="text-decoration-none" href="tel:<?php echo($phone_number); ?>">Call Us</a></li>
                     </ul>
                 </div>
 

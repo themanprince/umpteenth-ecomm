@@ -1,8 +1,8 @@
 <?php
     session_start();
 
-    require("../site_config.php");
-    require("../database.php");
+    require_once("../site_config.php");
+    require_once("../database.php");
 
     $db = new Database;
 ?>
@@ -12,12 +12,12 @@
     <head>
         <title><?php echo($site_name) ?></title>
         <?php
-            require("link-includes.php");
+            require_once("link-includes.php");
         ?>
     </head>
     <body>
         
-        <?php require("components/new-navbar.php"); ?>
+        <?php require_once("components/new-navbar.php"); ?>
                 
         <section id="all-products">
         <?php  
@@ -31,11 +31,11 @@
         
         <?php require_once("components/footer.php"); ?>
 
-        <script src="../helpers/fire_add_to_cart_modal.js"></script>
-        <script src="../helpers/handle_cart_notification_icon.js">
+        <?php require_once("../helpers/fire_add_to_cart_modal.php") ?>
+        <?php require_once("../helpers/handle_cart_notification_icon.php") ?>        
         <script src="../lib/js/sweetalert.js"></script>
         <?php
-            require("script-includes.php");
+            require_once("script-includes.php");
         ?>
     </body>
 </html>
