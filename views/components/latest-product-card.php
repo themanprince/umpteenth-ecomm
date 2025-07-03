@@ -21,15 +21,17 @@
         <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
             <li><small style="line-height: 1.15;"><?php echo($product_desc); ?></small></li>
         </ul>
+        <p class="text-center h3 fw-bold mb-0">N<?php echo($product_price); ?></p>
         <ul class="list-unstyled d-flex justify-content-center mb-1">
             <li>
 
             </li>
         </ul>
-        <p class="text-center h3 fw-bold mb-0">N<?php echo($product_price); ?></p>
+
     </div>
 </div>
 
+<script src="../lib/js/sweetalert.js"></script>
 <script>
     document.getElementById("<?php echo($product_id); ?>").addEventListener("click", () => fire_add_to_cart_modal('<?php echo($product_name); ?>', '<?php echo($product_image_url); ?>', '<?php echo($product_price); ?>', '<?php echo($product_desc); ?>', '<?php echo($product_qty_avail); ?>', Swal));
 </script>

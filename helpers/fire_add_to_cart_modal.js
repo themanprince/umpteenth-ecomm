@@ -40,16 +40,23 @@ function fire_add_to_cart_modal(product_id, product_name, product_image_url, pro
             const product_quantity_purchased = result.value.qty;
             const product_details = {product_id, product_name, product_price, product_image_url, product_quantity_purchased, product_quantity_avail, product_description};
             if(sessionStorage.getItem("cart") == null)
-                sessionStorage.setItem("cart", JSON.stringify([{...product_details}]));
-            else {
-                cart = JSON.parse(sessionStorage.getItem("cart"));
-                cart.push({...product_details});
-                sessionStorage.setItem("cart", JSON.stringify(cart));
+                sessionStorage.setItem("cart", JSON.stringify({}));
+            
+            const cart = JSON.parse(sessionStorage.getItem("cart"));
+
+            if(cart[product_details.product_id]) {
+                const existing_qty_purchased = cart[product_details.product_id].product_quantity_purchased;
+                cart[product_details.product_id].product_quantity_purchased = String(parseInt(existing_qty_purchased) + parseInt(product_details.product_quantity_purchased || 1));
+            } else {
+                cart[product_details.product_id] = {...product_details};
             }
+            
+            sessionStorage.setItem("cart", JSON.stringify(cart));
+            
 
             document.getElementById("cart-icon")
                 .dispatchEvent(new Event("cartModified"));
-            console.log("In fire_add_to_cart, cart-icon is ", document.getElementById("cart-icon"));
+            
         }
     });
     }

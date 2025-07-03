@@ -48,10 +48,13 @@
         <script src="../lib/js/sweetalert.js"></script>
         <script src="../lib/js/paystack-inline.js"></script>
         <script>
-            const cart = JSON.parse(sessionStorage.getItem('cart') || "[]");
+            const cart = JSON.parse(sessionStorage.getItem('cart') || "{}");
             let total = 0, cartTemplate = '';
             
-            cart.forEach(item => {
+            const cart_keys = Object.keys(cart);
+            cart_keys.forEach(key => {
+                const item = cart[key];
+
                 const item_total = (item.product_quantity_purchased * item.product_price) || null;
                 total += item_total;
 

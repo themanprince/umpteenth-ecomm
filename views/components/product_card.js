@@ -51,12 +51,17 @@ const createProductCard = ({product_id, product_name, product_price, product_ima
                     const product_quantity_purchased = result.value.qty;
                     const product_details = {product_id, product_name, product_price, product_image_url, product_quantity_purchased, product_quantity_avail, product_description};
                     if(sessionStorage.getItem("cart") == null)
-                        sessionStorage.setItem("cart", JSON.stringify([{...product_details}]));
-                    else {
-                        cart = JSON.parse(sessionStorage.getItem("cart"));
-                        cart.push({...product_details});
-                        sessionStorage.setItem("cart", JSON.stringify(cart));
+                        sessionStorage.setItem("cart", JSON.stringify({}));
+                    
+                    const cart = JSON.parse(sessionStorage.getItem("cart"));
+                    if(cart[product_details.product_id]) {
+                    cart[product_details.product_id].product_quantity_purchased += product_details.product_quantity_purchased || 1;
+                    } else {
+                    cart[product_details.product_id] = {...product_details};
                     }
+                    
+                    sessionStorage.setItem("cart", JSON.stringify(cart));
+                    
 
                     document.getElementById("cart-icon")
                         .dispatchEvent(new Event("cartModified"));
