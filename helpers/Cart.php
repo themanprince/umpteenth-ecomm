@@ -1,9 +1,13 @@
 <script>
-    function addToCart(product_details) {
+    function getCart() {
         if(sessionStorage.getItem("cart") == null)
             sessionStorage.setItem("cart", JSON.stringify({}));
             
-        cart = JSON.parse(sessionStorage.getItem("cart"));   
+        return JSON.parse(sessionStorage.getItem("cart"));   
+    }
+
+    function addToCart(product_details) {
+        const cart = getCart();
 
         if(cart[product_details.product_id]) {
             const existing_qty_purchased = cart[product_details.product_id].product_quantity_purchased;
@@ -16,6 +20,15 @@
     }
 
     function cartLength() {
-        return (Object.keys(JSON.parse(sessionStorage.getItem("cart")) || {})).length;
+        const cart = getCart();
+        return Object.keys(getCart()).length;
+    }
+
+    function getQtyOfItemPurchased(product_id) {
+        const product = (getCart())[product_id];
+        if (product)
+            return parseInt(product.product_quantity_purchased);
+
+        return 0;
     }
 </script>

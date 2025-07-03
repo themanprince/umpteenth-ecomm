@@ -7,6 +7,9 @@ customer home page is views/customer-home.php
 admin starting point is views/admin-login.php
 
 TODO
-- finish UI revamp
+- change cart data structure before submitting it to backend  
+or
+- change cart reading procedure in backend
+
 - finish payment feature integration
 - implment admin notification feature

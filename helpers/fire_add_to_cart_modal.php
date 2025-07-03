@@ -31,11 +31,23 @@
             "cancelButtonText": "Cancel",
             "focusConfirm": false,
             "preConfirm": () => {
-                const qty = document.getElementById("quantity-to-buy").value;
+                const qty = parseInt(document.getElementById("quantity-to-buy").value);
+                
                 if(!qty || qty <= 0 || qty > product_quantity_avail) {
                     alert_sys.showValidationMessage("Please Enter a Valid Quantity. Quantity available for this product is " + product_quantity_avail);
                     return false;
                 }
+
+                const qty_already_purchased = getQtyOfItemPurchased(product_id);         
+                const combined_qty_to_purchase = qty + qty_already_purchased;
+
+                console.log(`qty_already_purchased is ${qty_already_purchased}, combined_qty_to_purchase is ${combined_qty_to_purchase}, amount available for product is ${product_quantity_avail}`);
+
+                if(combined_qty_to_purchase > product_quantity_avail) {
+                    alert_sys.showValidationMessage("Insufficient Quantity available. Amount already in your cart is " + qty_already_purchased +". Quantity available for this product is " + product_quantity_avail);
+                    return false;
+                }
+
                 return {qty};
             },
         }).then(result => {
@@ -50,5 +62,5 @@
                 
             }
         });
-        }
+    }
 </script>

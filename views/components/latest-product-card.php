@@ -32,6 +32,3 @@
 </div>
 
 <script src="../lib/js/sweetalert.js"></script>
-<script>
-    document.getElementById("<?php echo($product_id); ?>").addEventListener("click", () => fire_add_to_cart_modal('<?php echo($product_name); ?>', '<?php echo($product_image_url); ?>', '<?php echo($product_price); ?>', '<?php echo($product_desc); ?>', '<?php echo($product_qty_avail); ?>', Swal));
-</script>

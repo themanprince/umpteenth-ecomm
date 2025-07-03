@@ -21,7 +21,6 @@
         
         <?php require("components/banner.php"); ?>
         
-
         <section class="feature_part section_padding" id="about-us-section">
             <div class="container">
                 <div class="row justify-content-between">
