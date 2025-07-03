@@ -2,10 +2,12 @@
 <html lang="en">
     <head>
         <?php
-            include("title-and-meta.php");
+            require("title-and-meta.php");
         ?>
     </head>
     <body>
+        <?php require_once("components/new-navbar.php"); ?>
+        
         <div class="container py-4">
             <h4>Your Cart</h4>
             <table class="table table-striped">
@@ -52,6 +54,7 @@
             let total = 0, cartTemplate = '';
             
             const cart_keys = Object.keys(cart);
+
             cart_keys.forEach(key => {
                 const item = cart[key];
 
@@ -69,7 +72,7 @@
                 
             });
 
-            document.getElementById("cart-items").innerHTML = (cart.length > 0) ? cartTemplate : `<b class="text-center fw-bold h5">No Item in Cart</b>`;
+            document.getElementById("cart-items").innerHTML = (cart_keys.length > 0) ? cartTemplate : `<b class="text-center fw-bold h5">No Item in Cart</b>`;
             document.getElementById("cart-total").innerText = "Total: N" + total;
             const checkout_btn = document.getElementById("checkout-btn"),
                 checkout_form = document.getElementById("checkout-form");

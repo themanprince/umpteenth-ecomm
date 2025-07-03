@@ -80,9 +80,9 @@
         
         <?php require_once("components/footer.php"); ?>
 
-        <script src="../helpers/fire_add_to_cart_modal.js"></script>
-        <script src="../helpers/handle_cart_notification_icon.js">
         <script src="../lib/js/sweetalert.js"></script>
+        <?php include("../helpers/fire_add_to_cart_modal.php") ?>
+        <?php include("../helpers/handle_cart_notification_icon.php") ?>        
         <?php
             require("script-includes.php");
         ?>
