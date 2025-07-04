@@ -1,9 +1,9 @@
 <?php
-    require("../helpers/check-admin-login.php");
+    require_once("../helpers/check-admin-login.php");
     redirect_if_not_admin("customer-home.php");
-    
-    require("../database.php");
-    include("../general_config.php");
+
+    require_once("../database.php");
+    require_once("../general_config.php");
     $db = new Database;
 ?>
 

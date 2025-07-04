@@ -51,7 +51,7 @@
                     Swal.fire({
                         "icon": "success",
                         "text": result.value.msg
-                    }).then(e => window.location.href = "../views/product-view.php");
+                    }).then(e => window.location.href = "../views/admin-home.php");
                 }
             });
         </script>
