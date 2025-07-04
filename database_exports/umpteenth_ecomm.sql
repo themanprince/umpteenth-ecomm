@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2025 at 04:39 PM
+-- Generation Time: Jul 04, 2025 at 02:20 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,8 +28,9 @@ USE `umpteenth_ecomm`;
 --
 -- Table structure for table `ordered_items`
 --
+-- Creation: Jun 28, 2025 at 12:28 PM
+--
 
-DROP TABLE IF EXISTS `ordered_items`;
 CREATE TABLE `ordered_items` (
   `order_id` bigint(20) UNSIGNED NOT NULL,
   `product_id` bigint(20) UNSIGNED NOT NULL,
@@ -43,15 +44,22 @@ CREATE TABLE `ordered_items` (
 
 INSERT INTO `ordered_items` (`order_id`, `product_id`, `price`, `quantity_purchased`) VALUES
 (3, 10, 40000, 1),
-(3, 11, 120000, 2);
+(3, 11, 120000, 2),
+(4, 10, 40000, 1),
+(4, 11, 120000, 2),
+(5, 9, 231, 2),
+(5, 10, 40000, 1),
+(6, 9, 231, 2),
+(6, 10, 40000, 1);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `orders`
 --
+-- Creation: Jun 28, 2025 at 02:36 PM
+--
 
-DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `order_id` bigint(20) UNSIGNED NOT NULL,
   `customer_name` text NOT NULL,
@@ -66,17 +74,21 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `customer_name`, `customer_email`, `customer_address`, `customer_phone_number`, `is_completed`) VALUES
-(1, 'prince', 'princeadigwe29@gmail.com', '190A Hospital Road', '', 0),
-(2, '', '', '', '', 0),
-(3, 'prince', 'princeadigwe29@gmail.com', '190A Hospital Road Ozoro, Delta State', '08037680836', 0);
+(1, 'prince', 'princeadigwe29@gmail.com', '190A Hospital Road', '', 1),
+(2, '', '', '', '', 1),
+(3, 'prince', 'princeadigwe29@gmail.com', '190A Hospital Road Ozoro, Delta State', '08037680836', 1),
+(4, 'prince', 'princeadigwe29@gmail.com', '190A Hospital Road, Ozoro, Delta State', '08037680836', 0),
+(5, 'lolman', 'princeadigwe29@gmail.com', 'a randomplace', '23480376808336', 0),
+(6, 'cartclearer', 'princeadigwe29@gmail.com', 'Sam Igbedu Street, WQarri', '08024454568', 0);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `products`
 --
+-- Creation: Jun 20, 2025 at 05:13 PM
+--
 
-DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `product_id` bigint(20) UNSIGNED NOT NULL,
   `product_name` text NOT NULL,
@@ -92,7 +104,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_description`, `product_image_url`, `product_quantity_avail`, `is_hidden`) VALUES
-(2, 'democracy', 23, 'cost? lol', '../upload_dir/Web capture_16-6-2025_14338_prechitocollections.bumpa.shop.jpeg', 0, 1),
+(2, 'democracy', 23, 'cost? lol', '../upload_dir/Web capture_16-6-2025_14338_prechitocollections.bumpa.shop.jpeg', 0, 0),
 (4, 'Nigeria', 50, 'Sold', '../upload_dir/Dumebi_Deborah_Nwabueze_LGA_of_Identification_optimized_100.jpg', 1, 1),
 (6, 'Random Product', 345, 'The Randomest of Products', '../upload_dir/Web capture_16-6-2025_2235_prechitocollections.bumpa.shop.jpeg', 23, 1),
 (9, 'test', 231, 'a random product I created to test something', '../upload_dir/Web capture_16-6-2025_15333_prechitocollections.bumpa.shop.jpeg', 2, 0),
@@ -132,7 +144,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `order_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `products`

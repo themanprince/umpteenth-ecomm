@@ -7,5 +7,4 @@ customer home page is views/customer-home.php
 admin starting point is views/admin-login.php
 
 TODO
-- admin dashboard
 - finish payment feature integration
