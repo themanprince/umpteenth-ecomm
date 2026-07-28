@@ -1,5 +1,7 @@
 FROM php:8.2-apache
 
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+
 # Copy project files to the Apache server root
 COPY . /var/www/html/
 
