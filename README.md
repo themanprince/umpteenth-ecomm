@@ -1,3 +1,6 @@
+[Preview Customer site view](https://umpteenth-ecomm.onrender.com)
+[Preview Admin Site](https://umpteenth-ecomm.onrender.com/admin)
+
 modify database connection properties in database_config.php
 the database and its tables are in folder called database_exports
 
