@@ -31,7 +31,7 @@ USE `umpteenth_ecomm`;
 -- Creation: Jun 28, 2025 at 12:28 PM
 --
 
-CREATE TABLE `ordered_items` (
+CREATE TABLE IF NOT EXISTS `ordered_items` (
   `order_id` bigint(20) UNSIGNED NOT NULL,
   `product_id` bigint(20) UNSIGNED NOT NULL,
   `price` float NOT NULL COMMENT 'what was the price of the product at the time of purchase',
