@@ -5,7 +5,7 @@
 		private $db_connection;
 		private $db_selection;
 
-		function __construct(){
+		function __construct() {
 			include("database_config.php");
 			
 			// 1. Initialize the mysqli instance first
@@ -15,7 +15,7 @@
 				die("mysqli_init failed");
 			}
 
-			// 2. If running on Render (where DB_HOST is set), force SSL
+			// 2. If running on Render, force SSL
 			$ca_cert = '/etc/ssl/certs/ca-certificates.crt'; 
 			$this->db_connection->ssl_set(NULL, NULL, $ca_cert, NULL, NULL);
 
@@ -24,6 +24,26 @@
 
 			if (!$success) {
 				die("Database Connection Error (" . mysqli_connect_errno() . ") " . mysqli_connect_error());
+			}
+			
+			// DB and Tables creation/seeding script
+			$sql_file_path = __DIR__ . "/database_exports/umpteenth_ecomm.sql";
+
+			if (file_exists($sql_file_path)) {
+				// Read file contents into a long multi-line string variable
+				$sql_script = file_get_contents($sql_file_path);
+
+				// Run the script strings altogether
+				if ($this->db_connection->multi_query($sql_script)) {
+					// Crucial loop to clear the MySQL memory channel buffers for multi_query
+					do {
+						if ($result = $this->db_connection->store_result()) {
+							$result->free();
+						}
+					} while ($this->db_connection->next_result());
+				} else {
+					die("SQL Script Execution Failed: " . $this->db_connection->error);
+				}
 			}
 		}
 

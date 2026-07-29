@@ -2,7 +2,9 @@
 [Preview Admin Site](https://umpteenth-ecomm.onrender.com/admin)
 
 modify database connection properties in database_config.php
-the database and its tables are in folder called database_exports
+the database create script and its tables are in folder called database_exports
+
+password for admin site in site-config.php
 
 at the time of dev, the folder for file uploads was upload_dir... if you change this, make sure to modify this info in 'general-config.php'
 
