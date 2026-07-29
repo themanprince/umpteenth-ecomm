@@ -7,7 +7,24 @@
 
 		function __construct(){
 			include("database_config.php");
-			$this->db_connection = new mysqli($db_server,$db_user,$db_password,$db_selected,$db_port);
+			
+			// 1. Initialize the mysqli instance first
+			$this->db_connection = mysqli_init();
+
+			if (!$this->db_connection) {
+				die("mysqli_init failed");
+			}
+
+			// 2. If running on Render (where DB_HOST is set), force SSL
+			$ca_cert = '/etc/ssl/certs/ca-certificates.crt'; 
+			$this->db_connection->ssl_set(NULL, NULL, $ca_cert, NULL, NULL);
+
+			// 3. Establish the connection securely
+			$success = @$this->db_connection->real_connect($db_server, $db_user, $db_password, $db_selected, $db_port);
+
+			if (!$success) {
+				die("Database Connection Error (" . mysqli_connect_errno() . ") " . mysqli_connect_error());
+			}
 		}
 
 		function db_queryresult($sql=""){

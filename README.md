@@ -1,4 +1,4 @@
-[Preview Customer site view](https://umpteenth-ecomm.onrender.com)
+[Preview Customer site view](https://umpteenth-ecomm.onrender.com)  
 [Preview Admin Site](https://umpteenth-ecomm.onrender.com/admin)
 
 modify database connection properties in database_config.php
