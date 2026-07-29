@@ -20,40 +20,30 @@
 			$this->db_connection->ssl_set(NULL, NULL, $ca_cert, NULL, NULL);
 
 			// 3. Establish the connection securely
-			// setting null as DB prevents connection failures if the database doesn't exist yet
-			$success = @$this->db_connection->real_connect($db_server, $db_user, $db_password, NULL, $db_port);
-			
+			$success = @$this->db_connection->real_connect($db_server, $db_user, $db_password, $db_selected, $db_port);
+
 			if (!$success) {
 				die("Database Connection Error (" . mysqli_connect_errno() . ") " . mysqli_connect_error());
 			}
 			
-			$db_check_query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '" . $this->db_connection->real_escape_string($db_selected) . "'";
-			$check_result = $this->db_connection->query($db_check_query);
-			
-			if ($check_result && $check_result->num_rows == 0) {
-				
-				// DB and Tables creation/seeding script
-				$sql_file_path = __DIR__ . "/database_exports/umpteenth_ecomm.sql";
-	
-				if (file_exists($sql_file_path)) {
-					// Read file contents into a long multi-line string variable
-					$sql_script = file_get_contents($sql_file_path);
-	
-					// Run the script strings altogether
-					if ($this->db_connection->multi_query($sql_script)) {
-						// Crucial loop to clear the MySQL memory channel buffers for multi_query
-						do {
-							if ($result = $this->db_connection->store_result()) {
-								$result->free();
-							}
-						} while ($this->db_connection->next_result());
-					} else {
-						die("SQL Script Execution Failed: " . $this->db_connection->error);
-					}
+			// DB and Tables creation/seeding script
+			$sql_file_path = __DIR__ . "/database_exports/umpteenth_ecomm.sql";
+
+			if (file_exists($sql_file_path)) {
+				// Read file contents into a long multi-line string variable
+				$sql_script = file_get_contents($sql_file_path);
+
+				// Run the script strings altogether
+				if ($this->db_connection->multi_query($sql_script)) {
+					// Crucial loop to clear the MySQL memory channel buffers for multi_query
+					do {
+						if ($result = $this->db_connection->store_result()) {
+							$result->free();
+						}
+					} while ($this->db_connection->next_result());
+				} else {
+					die("SQL Script Execution Failed: " . $this->db_connection->error);
 				}
-			} else {
-				// The database already exists! Select it and skip the heavy setup block.
-				$this->db_connection->select_db($db_selected);
 			}
 		}
 
