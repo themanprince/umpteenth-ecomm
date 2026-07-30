@@ -20,11 +20,8 @@ SET time_zone = "+00:00";
 --
 -- --------------------------------------------------------
 
--- Table structure for table `products`
---
 -- Creation: Jun 20, 2025 at 05:13 PM
 -- Updated: July 30, 2026 at 7:15am
-
 CREATE TABLE IF NOT EXISTS `products` (
   `product_id` bigint(20) UNSIGNED NOT NULL,
   `product_name` text NOT NULL,
@@ -48,11 +45,9 @@ ALTER TABLE `products`
   MODIFY `product_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 
--- Table structure for table `orders`
---
+
 -- Creation: Jun 28, 2025 at 02:36 PM
 -- Updated: Jul 30, 2026 at 7:	6am
-
 CREATE TABLE IF NOT EXISTS `orders` (
   `order_id` bigint(20) UNSIGNED NOT NULL,
   `customer_name` text NOT NULL,
@@ -76,12 +71,9 @@ ALTER TABLE `orders`
   MODIFY `order_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 
---
--- Table structure for table `ordered_items`
---
+
 -- Creation: Jun 28, 2025 at 12:28 PM
 -- Updated: Jul 30, 2026 at 7:17am
-
 CREATE TABLE IF NOT EXISTS `ordered_items` (
   `order_id` bigint(20) UNSIGNED NOT NULL,
   `product_id` bigint(20) UNSIGNED NOT NULL,
