@@ -17,173 +17,81 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+-- --------------------------------------------------------
+
+-- Creation: Jun 20, 2025 at 05:13 PM
+-- Updated: July 30, 2026 at 7:15am
+CREATE TABLE IF NOT EXISTS `products` (
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `product_name` text NOT NULL,
+  `product_price` float NOT NULL,
+  `product_description` text NOT NULL,
+  `product_image_url` text NOT NULL,
+  `product_quantity_avail` float NOT NULL,
+  `is_hidden` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'From feature spec I got, Admin can choose to hide a product from appearing on Customers'' end'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
+-- Indexes for table `products`
 --
--- if database name is templated {{DB_NAME}}, this script is to be run by some arbitrary PHP code I wrote
-CREATE DATABASE IF NOT EXISTS `{{DB_NAME}}` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `{{DB_NAME}}`;
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`product_id`),
+  ADD UNIQUE KEY `product_id` (`product_id`);
 
-DROP PROCEDURE IF EXISTS InitializeMyDatabase;
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `product_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
--- Change delimiter so semicolons inside the procedure don't break early
-DELIMITER //
 
-CREATE PROCEDURE InitializeMyDatabase()
-BEGIN
-    DECLARE table_count INT DEFAULT 0;
 
-	
-	SELECT COUNT(*) INTO table_count 
-    FROM information_schema.tables 
-    WHERE table_schema = '{{DB_NAME}}' AND table_name = 'ordered_items';
+-- Creation: Jun 28, 2025 at 02:36 PM
+-- Updated: Jul 30, 2026 at 7:	6am
+CREATE TABLE IF NOT EXISTS `orders` (
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `customer_name` text NOT NULL,
+  `customer_email` text NOT NULL,
+  `customer_address` text NOT NULL,
+  `customer_phone_number` text NOT NULL,
+  `is_completed` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='for storing orders';
 
-    -- IF THE TABLE DOES NOT EXIST, RUN EVERYTHING INSIDE THIS BLOCK
-    IF table_count = 0 THEN
-    	-- Table structure for table `ordered_items`
-		--
-		-- Creation: Jun 28, 2025 at 12:28 PM
-		-- Edited: Jul 29, 2026 at 9:45PM
-		
-		CREATE TABLE IF NOT EXISTS `ordered_items` (
-		  `order_id` bigint(20) UNSIGNED NOT NULL,
-		  `product_id` bigint(20) UNSIGNED NOT NULL,
-		  `price` float NOT NULL COMMENT 'what was the price of the product at the time of purchase',
-		  `quantity_purchased` int(11) NOT NULL DEFAULT 1
-		) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='this is a list of products ordered per each order';
-		
-		-- Indexes for table `ordered_items`
-		--
-		ALTER TABLE `ordered_items`
-		  ADD PRIMARY KEY (`order_id`,`product_id`),
-		  ADD KEY `product_id` (`product_id`);
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_id`),
+  ADD UNIQUE KEY `order_id` (`order_id`);
 
-		-- Constraints for table `ordered_items`
-		--
-		ALTER TABLE `ordered_items`
-		  ADD CONSTRAINT `ordered_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
-		  ADD CONSTRAINT `ordered_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
-		COMMIT;
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
-		--
-		-- Dumping data for table `ordered_items`
-		--
-		
-		INSERT INTO `ordered_items` (`order_id`, `product_id`, `price`, `quantity_purchased`) VALUES
-		(3, 10, 40000, 1),
-		(3, 11, 120000, 2),
-		(4, 10, 40000, 1),
-		(4, 11, 120000, 2),
-		(5, 9, 231, 2),
-		(5, 10, 40000, 1),
-		(6, 9, 231, 2),
-		(6, 10, 40000, 1);
-		
 
-    END IF;
-    
-    SELECT COUNT(*) INTO table_count 
-    FROM information_schema.tables 
-    WHERE table_schema = '{{DB_NAME}}' AND table_name = 'orders';
 
-    -- IF THE TABLE DOES NOT EXIST, RUN EVERYTHING INSIDE THIS BLOCK
-    IF table_count = 0 THEN
-    
-	    -- Table structure for table `orders`
-		--
-		-- Creation: Jun 28, 2025 at 02:36 PM
-		-- Edited: July 29, 2026 at 9:50PM
-		
-		CREATE TABLE `orders` (
-		  `order_id` bigint(20) UNSIGNED NOT NULL,
-		  `customer_name` text NOT NULL,
-		  `customer_email` text NOT NULL,
-		  `customer_address` text NOT NULL,
-		  `customer_phone_number` text NOT NULL,
-		  `is_completed` tinyint(1) NOT NULL DEFAULT 0
-		) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='for storing orders';
-		
-		-- Indexes for table `orders`
-		--
-		ALTER TABLE `orders`
-		  ADD PRIMARY KEY (`order_id`),
-		  ADD UNIQUE KEY `order_id` (`order_id`);
-		
-		-- AUTO_INCREMENT for table `orders`
-		--
-		ALTER TABLE `orders`
-		  MODIFY `order_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+-- Creation: Jun 28, 2025 at 12:28 PM
+-- Updated: Jul 30, 2026 at 7:17am
+CREATE TABLE IF NOT EXISTS `ordered_items` (
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `price` float NOT NULL COMMENT 'what was the price of the product at the time of purchase',
+  `quantity_purchased` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='this is a list of products ordered per each order';
 
-		--
-		-- Dumping data for table `orders`
-		--
-		
-		INSERT INTO `orders` (`order_id`, `customer_name`, `customer_email`, `customer_address`, `customer_phone_number`, `is_completed`) VALUES
-		(1, 'prince', 'princeadigwe29@gmail.com', '190A Hospital Road', '', 1),
-		(2, '', '', '', '', 1),
-		(3, 'prince', 'princeadigwe29@gmail.com', '190A Hospital Road Ozoro, Delta State', '08037680836', 1),
-		(4, 'prince', 'princeadigwe29@gmail.com', '190A Hospital Road, Ozoro, Delta State', '08037680836', 0),
-		(5, 'lolman', 'princeadigwe29@gmail.com', 'a randomplace', '23480376808336', 0),
-		(6, 'cartclearer', 'princeadigwe29@gmail.com', 'Sam Igbedu Street, WQarri', '08024454568', 0);
-	
-	END IF;
-	
-	SELECT COUNT(*) INTO table_count 
-    FROM information_schema.tables 
-    WHERE table_schema = '{{DB_NAME}}' AND table_name = 'products';
+--
+-- Indexes for table `ordered_items`
+--
+ALTER TABLE `ordered_items`
+  ADD PRIMARY KEY (`order_id`,`product_id`),
+  ADD KEY `product_id` (`product_id`);
 
-    -- IF THE TABLE DOES NOT EXIST, RUN EVERYTHING INSIDE THIS BLOCK
-    IF table_count = 0 THEN
-		-- Table structure for table `products`
-		--
-		-- Creation: Jun 20, 2025 at 05:13 PM
-		-- Edited: July 29, 2026 at 9:57PM
-		
-		CREATE TABLE `products` (
-		  `product_id` bigint(20) UNSIGNED NOT NULL,
-		  `product_name` text NOT NULL,
-		  `product_price` float NOT NULL,
-		  `product_description` text NOT NULL,
-		  `product_image_url` text NOT NULL,
-		  `product_quantity_avail` float NOT NULL,
-		  `is_hidden` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'From feature spec I got, Admin can choose to hide a product from appearing on Customers'' end'
-		) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-		
-		
-		-- Indexes for table `products`
-		--
-		ALTER TABLE `products`
-		  ADD PRIMARY KEY (`product_id`),
-		  ADD UNIQUE KEY `product_id` (`product_id`);
-		
-		-- AUTO_INCREMENT for table `products`
-		--
-		ALTER TABLE `products`
-		  MODIFY `product_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
-		
-		--
-		-- Dumping data for table `products`
-		--
-		
-		INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_description`, `product_image_url`, `product_quantity_avail`, `is_hidden`) VALUES
-		(2, 'democracy', 23, 'cost? lol', '../upload_dir/Web capture_16-6-2025_14338_prechitocollections.bumpa.shop.jpeg', 0, 0),
-		(4, 'Nigeria', 50, 'Sold', '../upload_dir/Dumebi_Deborah_Nwabueze_LGA_of_Identification_optimized_100.jpg', 1, 1),
-		(6, 'Random Product', 345, 'The Randomest of Products', '../upload_dir/Web capture_16-6-2025_2235_prechitocollections.bumpa.shop.jpeg', 23, 1),
-		(9, 'test', 231, 'a random product I created to test something', '../upload_dir/Web capture_16-6-2025_15333_prechitocollections.bumpa.shop.jpeg', 2, 0),
-		(10, 'semolina', 40000, 'not your regular swallow. contains proteins and is very rich in iron', '../upload_dir/Dumebi_Deborah_Nwabueze_LGA_of_Identification_optimized_100.jpg', 1, 0),
-		(11, 'Rice', 120000, 'Brand: mango, mass: 50kg, authentic rice', '../upload_dir/Screenshot_20241128-183350.jpg', 2, 0);
-	END IF;
-	
-END //
-
-DELIMITER ;
-
--- RUN THE BLOCK
-CALL InitializeMyDatabase();
-
--- CLEAN UP (Delete the procedure immediately so it leaves no footprint)
-DROP PROCEDURE IF EXISTS InitializeMyDatabase;
-
+-- Constraints for table `ordered_items`
+--
+ALTER TABLE `ordered_items`
+  ADD CONSTRAINT `ordered_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
+  ADD CONSTRAINT `ordered_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

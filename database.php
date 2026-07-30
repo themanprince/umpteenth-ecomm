@@ -21,7 +21,7 @@
 
 			// 3. Establish the connection securely
 			$success = @$this->db_connection->real_connect($db_server, $db_user, $db_password, $db_selected, $db_port);
-
+			
 			if (!$success) {
 				die("Database Connection Error (" . mysqli_connect_errno() . ") " . mysqli_connect_error());
 			}
