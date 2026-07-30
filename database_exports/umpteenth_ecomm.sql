@@ -18,78 +18,14 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `umpteenth_ecomm`
---
-CREATE DATABASE IF NOT EXISTS `umpteenth_ecomm` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `umpteenth_ecomm`;
-
 -- --------------------------------------------------------
 
---
--- Table structure for table `ordered_items`
---
--- Creation: Jun 28, 2025 at 12:28 PM
---
-
-CREATE TABLE IF NOT EXISTS `ordered_items` (
-  `order_id` bigint(20) UNSIGNED NOT NULL,
-  `product_id` bigint(20) UNSIGNED NOT NULL,
-  `price` float NOT NULL COMMENT 'what was the price of the product at the time of purchase',
-  `quantity_purchased` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='this is a list of products ordered per each order';
-
---
--- Dumping data for table `ordered_items`
---
-
-INSERT INTO `ordered_items` (`order_id`, `product_id`, `price`, `quantity_purchased`) VALUES
-(3, 10, 40000, 1),
-(3, 11, 120000, 2),
-(4, 10, 40000, 1),
-(4, 11, 120000, 2),
-(5, 9, 231, 2),
-(5, 10, 40000, 1),
-(6, 9, 231, 2),
-(6, 10, 40000, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `orders`
---
--- Creation: Jun 28, 2025 at 02:36 PM
---
-
-CREATE TABLE `orders` (
-  `order_id` bigint(20) UNSIGNED NOT NULL,
-  `customer_name` text NOT NULL,
-  `customer_email` text NOT NULL,
-  `customer_address` text NOT NULL,
-  `customer_phone_number` text NOT NULL,
-  `is_completed` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='for storing orders';
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`order_id`, `customer_name`, `customer_email`, `customer_address`, `customer_phone_number`, `is_completed`) VALUES
-(1, 'prince', 'princeadigwe29@gmail.com', '190A Hospital Road', '', 1),
-(2, '', '', '', '', 1),
-(3, 'prince', 'princeadigwe29@gmail.com', '190A Hospital Road Ozoro, Delta State', '08037680836', 1),
-(4, 'prince', 'princeadigwe29@gmail.com', '190A Hospital Road, Ozoro, Delta State', '08037680836', 0),
-(5, 'lolman', 'princeadigwe29@gmail.com', 'a randomplace', '23480376808336', 0),
-(6, 'cartclearer', 'princeadigwe29@gmail.com', 'Sam Igbedu Street, WQarri', '08024454568', 0);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `products`
 --
 -- Creation: Jun 20, 2025 at 05:13 PM
---
+-- Updated: July 30, 2026 at 7:15am
 
-CREATE TABLE `products` (
+CREATE TABLE IF NOT EXISTS `products` (
   `product_id` bigint(20) UNSIGNED NOT NULL,
   `product_name` text NOT NULL,
   `product_price` float NOT NULL,
@@ -100,27 +36,31 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `products`
+-- Indexes for table `products`
 --
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`product_id`),
+  ADD UNIQUE KEY `product_id` (`product_id`);
 
-INSERT INTO `products` (`product_id`, `product_name`, `product_price`, `product_description`, `product_image_url`, `product_quantity_avail`, `is_hidden`) VALUES
-(2, 'democracy', 23, 'cost? lol', '../upload_dir/Web capture_16-6-2025_14338_prechitocollections.bumpa.shop.jpeg', 0, 0),
-(4, 'Nigeria', 50, 'Sold', '../upload_dir/Dumebi_Deborah_Nwabueze_LGA_of_Identification_optimized_100.jpg', 1, 1),
-(6, 'Random Product', 345, 'The Randomest of Products', '../upload_dir/Web capture_16-6-2025_2235_prechitocollections.bumpa.shop.jpeg', 23, 1),
-(9, 'test', 231, 'a random product I created to test something', '../upload_dir/Web capture_16-6-2025_15333_prechitocollections.bumpa.shop.jpeg', 2, 0),
-(10, 'semolina', 40000, 'not your regular swallow. contains proteins and is very rich in iron', '../upload_dir/Dumebi_Deborah_Nwabueze_LGA_of_Identification_optimized_100.jpg', 1, 0),
-(11, 'Rice', 120000, 'Brand: mango, mass: 50kg, authentic rice', '../upload_dir/Screenshot_20241128-183350.jpg', 2, 0);
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `product_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
---
--- Indexes for dumped tables
---
 
+-- Table structure for table `orders`
 --
--- Indexes for table `ordered_items`
---
-ALTER TABLE `ordered_items`
-  ADD PRIMARY KEY (`order_id`,`product_id`),
-  ADD KEY `product_id` (`product_id`);
+-- Creation: Jun 28, 2025 at 02:36 PM
+-- Updated: Jul 30, 2026 at 7:	6am
+
+CREATE TABLE IF NOT EXISTS `orders` (
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `customer_name` text NOT NULL,
+  `customer_email` text NOT NULL,
+  `customer_address` text NOT NULL,
+  `customer_phone_number` text NOT NULL,
+  `is_completed` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='for storing orders';
 
 --
 -- Indexes for table `orders`
@@ -130,33 +70,32 @@ ALTER TABLE `orders`
   ADD UNIQUE KEY `order_id` (`order_id`);
 
 --
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`product_id`),
-  ADD UNIQUE KEY `product_id` (`product_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `order_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `product_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- Constraints for dumped tables
+-- Table structure for table `ordered_items`
 --
+-- Creation: Jun 28, 2025 at 12:28 PM
+-- Updated: Jul 30, 2026 at 7:17am
+
+CREATE TABLE IF NOT EXISTS `ordered_items` (
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `price` float NOT NULL COMMENT 'what was the price of the product at the time of purchase',
+  `quantity_purchased` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='this is a list of products ordered per each order';
 
 --
+-- Indexes for table `ordered_items`
+--
+ALTER TABLE `ordered_items`
+  ADD PRIMARY KEY (`order_id`,`product_id`),
+  ADD KEY `product_id` (`product_id`);
+
 -- Constraints for table `ordered_items`
 --
 ALTER TABLE `ordered_items`
