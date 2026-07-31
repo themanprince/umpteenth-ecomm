@@ -1,7 +1,0 @@
-RewriteEngine On
-
-# 1. Route the main root URL to the customer home page
-RewriteRule ^$ views/customer-home.php [L]
-
-# 2. Route "/admin" or "/admin/" to the admin login page
-RewriteRule ^admin/?$ views/admin-login.php [L]
