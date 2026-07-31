@@ -5,6 +5,10 @@ RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 # Copy project files to the Apache server root
 COPY . /var/www/html/
 
+# debugging
+RUN echo "Contents of /var/www/html:" && ls -la /var/www/html
+RUN echo "Contents of icons:" && ls -la /var/www/html/icons || echo "icons folder not found"
+
 # Enable Apache rewrite module
 RUN a2enmod rewrite
 
