@@ -38,25 +38,25 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-3 col-sm-6">
                         <div class="single_feature_part">
-                            <img src="../icons/feature_icon_1.svg" alt="#">
+                            <img src="<?= $baseUrl ?>/icons/feature_icon_1.svg" alt="#">
                             <h4>Credit Card Support</h4>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="single_feature_part">
-                            <img src="../icons/feature_icon_2.svg" alt="#">
+                            <img src="<?= $baseUrl ?>/icons/feature_icon_2.svg" alt="#">
                             <h4>Online Order</h4>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="single_feature_part">
-                            <img src="../icons/feature_icon_3.svg" alt="#">
+                            <img src="<?= $baseUrl ?>/icons/feature_icon_3.svg" alt="#">
                             <h4>Fast Delivery</h4>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="single_feature_part">
-                            <img src="../icons/feature_icon_4.svg" alt="#">
+                            <img src="<?= $baseUrl ?>/icons/feature_icon_4.svg" alt="#">
                             <h4>Product with Gift</h4>
                         </div>
                     </div>

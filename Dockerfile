@@ -6,8 +6,11 @@ RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 COPY . /var/www/html/
 
 # debugging
+RUN echo "debugging..."
 RUN echo "Contents of /var/www/html:" && ls -la /var/www/html
 RUN echo "Contents of icons:" && ls -la /var/www/html/icons || echo "icons folder not found"
+RUN echo "searching for icon"
+RUN find /var/www/html -name "feature_icon_4.svg"
 
 # Enable Apache rewrite module
 RUN a2enmod rewrite
